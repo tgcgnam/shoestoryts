@@ -1,0 +1,45 @@
+.prods-container {
+    // position: absolute;
+    // right: 16px;
+    // top: 480px;
+    // left: 218px;
+    &.brand-container {
+        top: 92px;
+        &>.brand-banner>img {
+            width: 100%;
+            padding: 16px 0;
+        }
+    }
+    .see-more {
+        color: #f8c052;
+        cursor: pointer;
+        transform: translateX(24px);
+        margin-bottom: 24px;
+        font-size: 1.5rem;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.prod-item {}
+
+.delete-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 22px;
+    cursor: pointer;
+    padding: 6px;
+    color: #ff5959;
+}
+
+.relative {
+    position: relative;
+}
+
+@media (max-width: 772px) {
+    .prods-container {
+        left: 16px;
+        overflow: hidden;
+    }
+}
