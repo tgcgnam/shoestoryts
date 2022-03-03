@@ -1,27 +1,17 @@
-import { useState, useContext } from "react";
-import { GlobalContext } from "../globalState";
-import Loader from "../components/Loader/Loader";
-import Banner from "../components/Banner/Banner";
-import ProdItemContainer from "../components/ProdItem/ProdItemContainer";
-import { useEffect } from "react";
-
+import Banner from "../components/banner/Banner";
+import ProdItemContainer from "../components/prodItem/ProdItemContainer";
+import Search from "antd/lib/input/Search";
 
 function HomePage() {
-  const { isLoader } = useContext(GlobalContext);
-  const [seeMore, setSeeMore] = useState(false)
 
-    useEffect(() => {
-      window.scroll(0, 0);
-    }, []);
+
+  const onSearch = (value: any) => console.log(value);
+  
   return (
     <>
       <Banner />
-      <ProdItemContainer
-        seeMore={seeMore}
-        setSeeMore={setSeeMore}
-        quantity={8}
-      />
-      {/* {isLoader && <Loader />} */}
+
+      <ProdItemContainer quantity={12} />
     </>
   );
 }

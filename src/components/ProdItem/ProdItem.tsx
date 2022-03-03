@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { Card, Button, Skeleton } from "antd";
+import { Card, Button, message, Modal } from "antd";
 import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../globalFunction";
 import { GlobalContext } from "../../globalState";
 import "./ProdItem.scss";
+import { iCart } from "antd/lib/list";
 import "antd/dist/antd.css";
 
 // styled
@@ -110,8 +111,8 @@ const CardProd = styled(Card)`
     .status {
       position: absolute;
       margin-left: 50%;
-      margin-top: -79px;
-      padding: 20px;
+      background: white;
+      margin-top: -35px;
       transform: translateX(-50%);
       span {
         font-size: 1.8rem;
@@ -122,8 +123,8 @@ const CardProd = styled(Card)`
   }
 `;
 
-// functions
-function ProdItem(props: any) {
+
+function ProdItem(props: iCart) {
   const { handlePrice } = globalFunction();
 
   const {
@@ -136,10 +137,11 @@ function ProdItem(props: any) {
   } = useContext(GlobalContext);
 
   const addToCart = () => {
+   
     let newData = [...cart];
     let check = true;
 
-    if (props.condition === "Hết hàng") {
+    if (props.condition === "Tạm Hết hàng") {
       setIsSoldOut(true);
     } else {
       newData.map((item) => {
@@ -152,6 +154,12 @@ function ProdItem(props: any) {
       });
 
       if (check) {
+        message.success({
+          content: "Đã thêm vào giỏ hàng",
+          style: {
+            marginTop: "100px",
+          },
+        });
         newData.push({
           cartId: props.id,
           cartImg: props.img,
@@ -182,15 +190,17 @@ function ProdItem(props: any) {
   };
 
   return (
-    <CardProd className="ahahahahah">
+    <CardProd className="">
       <div className="prod-item">
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
         </div>
-        <div className="cart-fav-btn">
-          <HeartFilled />
-        </div>
-        <Link to={`/detail/${props.id}`} style={{ textAlign: "center" }}>
+   
+        <Link
+          // onClick={showModal}
+          to={`/detail/${props.id}`}
+          style={{ textAlign: "center" }}
+        >
           <img src={props.img} />
           <p>{props.name}</p>
         </Link>
@@ -203,10 +213,10 @@ function ProdItem(props: any) {
           )}
         </div>
         <div className="status">
-          <span>{props.condition === "Hết hàng" && "Hết hàng"}</span>
+          <span>{props.condition === "Tạm Hết hàng" && "Tạm Hết hàng"}</span>
         </div>
-        <Button>MUA NGAY</Button>
       </div>
+
       {props.displayTrash && (
         <div onClick={deleteFavProd} className="delete-btn fas fa-trash"></div>
       )}

@@ -1,5 +1,6 @@
 import { useEffect, useContext } from "react";
-import ProdItem from "../components/ProdItem/ProdItem";
+import ProdItem from "../components/prodItem/ProdItem";
+import { iCart } from "antd/lib/list";
 import { GlobalContext } from "../globalState";
 import { Button, List } from "antd";
 
@@ -13,10 +14,8 @@ const ListItem = styled(List)`
     margin-right: 0 !important;
   }
 `;
-interface Brand {
-  brand: string;
-}
-function Vans() {
+
+function Vans(_props: iCart) {
   const { brandItems, setBrandItems, isLoader, setIsLoader } =
     useContext(GlobalContext);
 
@@ -28,11 +27,9 @@ function Vans() {
       .then(() => setIsLoader(false));
   }, []);
 
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
-
-const Converse = brandItems.filter((item: { brand: string; }) => item.brand == 'converse')
+  const Converse = brandItems.filter(
+    (item: { brand: string }) => item.brand == "converse"
+  );
 
   return (
     <div className="prods-container brand-container">
@@ -42,29 +39,33 @@ const Converse = brandItems.filter((item: { brand: string; }) => item.brand == '
       <ListItem
         grid={{
           gutter: 16,
-          xs: 1,
+          xs: 2,
           sm: 2,
-          md: 2,
+          md: 3,
           lg: 3,
           xl: 4,
           xxl: 4,
         }}
         dataSource={Converse}
-        renderItem={(brandItem: any, index: number) => {
+        renderItem={(props) => {
           return (
             <ProdItem
-              key={index}
-              id={brandItem.id}
-              name={brandItem.name}
-              condition={brandItem.condition}
-              status={brandItem.status}
-              price={brandItem.price}
-              sale={brandItem.sale}
-              img={brandItem.image1}
-              brand={brandItem.brand}
-              sizes={brandItem.sizes}
-              material={brandItem.material}
-              color={brandItem.color}
+              key={props.id}
+              id={props.id}
+              name={props.name}
+              condition={props.condition}
+              status={props.status}
+              price={props.price}
+              sale={props.sale}
+              img={props.img}
+              brand={props.brand}
+              sizes={props.sizes}
+              material={props.material}
+              color={props.color}
+              displayTrash={undefined}
+              image2={""}
+              image3={""}
+              image4={""}
             ></ProdItem>
           );
         }}

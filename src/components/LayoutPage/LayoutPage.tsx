@@ -1,21 +1,21 @@
 import { Routes, Route } from "react-router-dom";
-import Logo from "../Logo/Logo";
-import Navigation from "../Navigation/Navigation";
+import Logo from "../logo/Logo";
+import Navigation from "../navigation/Navigation";
 import HomePage from "../../pages/Home";
 import ConversePage from "../../pages/Converse";
 import VansPage from "../../pages/Vans";
 import CartPage from "../../pages/Cart";
 import FavoritePage from "../../pages/Favorite";
 import DetailPage from "../../pages/Detail";
-import FooterPage from "../Footer/Footer";
-import { Layout } from "antd";
+import FooterPage from "../footer/Footer";
+import { Layout, BackTop } from "antd";
 import { GlobalContext } from "../../globalState";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 const { Header, Footer, Sider, Content } = Layout;
 import "antd/dist/antd.css";
-import NaviRespon from "../NaviRespon/NaviRespon";
+import NaviRespon from "../naviRespon/NaviRespon";
 
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {
@@ -25,7 +25,7 @@ const SiderNav = styled(Sider)`
 `;
 
 const NavHeader = styled(Layout)`
-  .ant-space-item{
+  .ant-space-item {
     position: fixed;
     top: 10px;
     z-index: 4;
@@ -34,9 +34,9 @@ const NavHeader = styled(Layout)`
 
 
 function LayoutPage() {
-  const { isLoader } = useContext(GlobalContext);
-  console.log(isLoader);
 
+
+ 
   return (
     <>
       <NavHeader style={{ background: "#fff" }}>
@@ -51,8 +51,20 @@ function LayoutPage() {
           <Content>
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
-              <Route path="/converse" element={<ConversePage />}></Route>
-              <Route path="/vans" element={<VansPage />}></Route>
+              <Route
+                path="/converse"
+                element={
+                  <ConversePage displayTrash={undefined} id={0} price={0} img={""} image2={""} image3={""} image4={""} name={""} sale={0} status={""} condition={""} brand={""} sizes={0} material={""} color={""}             
+                  />
+                }
+              ></Route>
+              <Route
+                path="/vans"
+                element={
+                  <VansPage displayTrash={undefined} id={0} price={0} img={""} image2={""} image3={""} image4={""} name={""} sale={0} status={""} condition={""} brand={""} sizes={0} material={""} color={""}                   
+                  />
+                }
+              ></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/favorite" element={<FavoritePage />}></Route>
               <Route path="/detail/:id" element={<DetailPage />}></Route>
@@ -61,9 +73,11 @@ function LayoutPage() {
         </Layout>
         <Footer style={{ background: "#f0f2f5" }}>
           <FooterPage />
+          <BackTop>
+            <div>UP</div>
+          </BackTop>
         </Footer>
       </NavHeader>
-      {/* {!isLoader && <Loader />} */}
     </>
   );
 }

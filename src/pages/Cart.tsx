@@ -1,10 +1,7 @@
 import { useContext, useEffect } from "react";
-
+import CartContainer from "../components/cart/CartContainer";
 import { GlobalContext } from "../globalState";
 
-
-
-import Loader from "../components/Loader/Loader";
 
 function CartPage() {
   const {
@@ -24,7 +21,7 @@ function CartPage() {
   }, []);
   return (
     <div>
-   
+      <CartContainer />
     </div>
   );
 }

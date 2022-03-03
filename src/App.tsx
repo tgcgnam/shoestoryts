@@ -1,5 +1,5 @@
 import GlobalState from "./globalState";
-import LayoutPage from "./components/LayoutPage/LayoutPage";
+import LayoutPage from "./components/layoutPage/LayoutPage";
 import "./App.scss";
 
 

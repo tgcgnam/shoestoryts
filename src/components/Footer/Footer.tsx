@@ -243,7 +243,9 @@ function FooterPage() {
 
         <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 4 }}>
           <div className="footer-infor-title">
-            <div><h5>Địa chỉ:</h5> 48 P. Tố Hữu Trung Văn Từ Liêm Hà Nội</div>
+            <div>
+              <h5>Địa chỉ:</h5> 48 P. Tố Hữu Trung Văn Từ Liêm Hà Nội
+            </div>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.862232448302!2d105.7921227153517!3d20.998158886015045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acba7ddb0f43%3A0xe7d7c05f85f830a!2zNDggUC4gVOG7kSBI4buvdSwgVHJ1bmcgVsSDbiwgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1645772300190!5m2!1svi!2s"
               width="90%"

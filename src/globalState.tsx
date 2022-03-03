@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
 
-export const GlobalContext: any = createContext(null);
 
-function GlobalState({ children }: any): any {
-  const [products, setProducts] = useState([]);
+export const GlobalContext:any  = createContext(GlobalState);
 
-  const [productId, setProductId] = useState();
+function GlobalState({children}: any) {
+  const [products, setProducts] = useState<[]>([]);
 
-  const [favProducts, setFavProducts] = useState(() => {
+  const [productId, setProductId] = useState<number>();
+
+  const [favProducts, setFavProducts] = useState<string>(() => {
     const favProducts = localStorage.getItem("favProds");
     if (favProducts) {
       return JSON.parse(favProducts);
@@ -17,15 +18,15 @@ function GlobalState({ children }: any): any {
   });
   localStorage.setItem("favProds", JSON.stringify(favProducts));
 
-  const [brandItems, setBrandItems] = useState([]);
+  const [brandItems, setBrandItems] = useState<any[]>([]);
 
-  const [isHideNav, setIsHideNav] = useState(true);
+  const [isHideNav, setIsHideNav] = useState<boolean>(true);
 
-  const [isDisplayNav, setIsDisplayNav] = useState(false);
+  const [isDisplayNav, setIsDisplayNav] = useState<boolean>(false);
+  //
+  const [imgLink, setImgLink] = useState<string>("");
 
-  const [imgLink, setImgLink] = useState("");
-
-  const [cart, setCart] = useState(() => {
+  const [cart, setCart] = useState<any[]>(() => {
     const cart = localStorage.getItem("cart");
     if (cart) {
       return JSON.parse(cart);
@@ -35,17 +36,17 @@ function GlobalState({ children }: any): any {
   });
   localStorage.setItem("cart", JSON.stringify(cart));
 
-  const [isCartWarning, setIsCartWarning] = useState(false);
+  const [isCartWarning, setIsCartWarning] = useState<boolean>(false);
 
-  const [isRemoveWarning, setIsRemoveWarning] = useState(false);
+  const [isRemoveWarning, setIsRemoveWarning] = useState<boolean>(false);
 
-  const [isAddFavSuccess, setIsAddFavSuccess] = useState(false);
+  const [isAddFavSuccess, setIsAddFavSuccess] = useState<boolean>(false);
 
-  const [isAddCartSuccess, setIsAddCartSuccess] = useState(false);
+  const [isAddCartSuccess, setIsAddCartSuccess] = useState<boolean>(false);
 
-  const [isAddFavWarn, setIsAddFavWarn] = useState(false);
+  const [isAddFavWarn, setIsAddFavWarn] = useState<boolean>(false);
 
-  const [isUpdatedFavorite, setIsUpdatedFavorite] = useState(() => {
+  const [isUpdatedFavorite, setIsUpdatedFavorite] = useState<any[]>(() => {
     const isUpdatedFavorite = localStorage.getItem("isUpdated");
     if (isUpdatedFavorite) {
       return JSON.parse(isUpdatedFavorite);
@@ -55,43 +56,36 @@ function GlobalState({ children }: any): any {
   });
   localStorage.setItem("isUpdated", JSON.stringify(isUpdatedFavorite));
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
 
-  const [cusInfo, setCusInfo] = useState({});
+  const [cusInfo, setCusInfo] = useState<any>({});
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<any>({});
 
-  const [confirmInfo, setConfirmInfo] = useState(false);
+  const [confirmInfo, setConfirmInfo] = useState<boolean>(false);
 
-  const [letSubmit, setLetSubmit] = useState(false);
+  const [letSubmit, setLetSubmit] = useState<boolean>(false);
 
-  const [isWarningInfo, setIsWarningInfo] = useState(false);
+  const [isWarningInfo, setIsWarningInfo] = useState<boolean>(false);
 
-  const [isWarningConfirmInfo, setIsWarningConfirmInfo] = useState(false);
+  const [isWarningConfirmInfo, setIsWarningConfirmInfo] =
+    useState<boolean>(false);
 
-  const [isSizeWarning, setIsSizeWarning] = useState(false);
+  const [isSizeWarning, setIsSizeWarning] = useState<boolean>(false);
 
-   interface IsLoader {
-     isLoader: boolean;
-     setIsLoader: boolean;
-   }
-  const [isLoader, setIsLoader] = useState <IsLoader['isLoader']>(true);
+  const [isLoader, setIsLoader] = useState<boolean>(true);
 
-  const [cartSizeWarnings, setCartSizeWarnings] = useState({});
+  const [cartSizeWarnings, setCartSizeWarnings] = useState<any>({});
 
-  const [isOrderSuccess, setIsOrderSuccess] = useState(false);
+  const [isOrderSuccess, setIsOrderSuccess] = useState<boolean>(false);
 
-  const [orderedProds, setOrderedProds] = useState([]);
+  const [orderedProds, setOrderedProds] = useState<any[]>([]);
 
-  const [isSoldOut, setIsSoldOut] = useState(false);
+  const [isSoldOut, setIsSoldOut] = useState<boolean>(false);
 
-  const [isWarningCartEmpty, setIsWarningCartEmpty] = useState(false);
-  
-  interface SeeMore {
-    seeMore: boolean;
-    setSeeMore: boolean;
-  }
-  const [seeMore, setSeeMore] = useState<SeeMore["seeMore"]>(false);
+  const [isWarningCartEmpty, setIsWarningCartEmpty] = useState<boolean>(false);
+
+  const [seeMore, setSeeMore] = useState<boolean>(false);
 
   return (
     <GlobalContext.Provider

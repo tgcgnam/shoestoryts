@@ -1,10 +1,10 @@
 import { useEffect, useContext, Key } from "react";
-import Loader from "../components/Loader/Loader";
-import ProdItem from "../components/ProdItem/ProdItem";
+import ProdItem from "../components/prodItem/ProdItem";
 import { GlobalContext } from "../globalState";
 import { Button, List, Space } from "antd";
 import "antd/dist/antd.css";
 import styled from "styled-components";
+import { iCart } from "antd/lib/list";
 
 const ListItem = styled(List)`
   margin-top: 40px;
@@ -14,7 +14,7 @@ const ListItem = styled(List)`
   }
 `;
 
-function VansPage() {
+function VansPage(_props: iCart) {
   const { brandItems, setBrandItems, isLoader, setIsLoader } =
     useContext(GlobalContext);
 
@@ -26,16 +26,13 @@ function VansPage() {
       .then(() => setIsLoader(false));
   }, []);
 
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
 
-  console.log(brandItems);
 
   // vansItem
   const Vans = brandItems.filter(
     (item: { brand: string }) => item.brand == "vans"
   );
+
 
   return (
     <div className="prods-container brand-container">
@@ -45,33 +42,37 @@ function VansPage() {
       <ListItem
         grid={{
           gutter: 16,
-          xs: 1,
+          xs: 2,
           sm: 2,
-          md: 2,
+          md: 3,
           lg: 3,
           xl: 4,
           xxl: 4,
         }}
         dataSource={Vans}
-        renderItem={(brandItem: any, index: number) => {
+        renderItem={(props) => {
           return (
             <ProdItem
-              key={index}
-              id={brandItem.id}
-              name={brandItem.name}
-              condition={brandItem.condition}
-              status={brandItem.status}
-              price={brandItem.price}
-              sale={brandItem.sale}
-              img={brandItem.image1}
-              brand={brandItem.brand}
-              sizes={brandItem.sizes}
-              material={brandItem.material}
-              color={brandItem.color}
+              key={props.id}
+              id={props.id}
+              name={props.name}
+              condition={props.condition}
+              status={props.status}
+              price={props.price}
+              sale={props.sale}
+              img={props.img}
+              brand={props.brand}
+              sizes={props.sizes}
+              material={props.material}
+              color={props.color}
+              displayTrash={undefined}
+              image2={""}
+              image3={""}
+              image4={""}
             ></ProdItem>
           );
         }}
-      />
+      ></ListItem>
     </div>
   );
 }

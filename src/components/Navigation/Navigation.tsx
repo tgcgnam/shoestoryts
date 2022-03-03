@@ -16,9 +16,7 @@ const { Sider } = Layout;
 import "antd/dist/antd.css";
 
 const NavLayout = styled(Layout)`
-  position: fixed;
-  z-index: 2;
-  top: 120px;
+  margin-top: 60px;
   ul {
     border: none;
   }

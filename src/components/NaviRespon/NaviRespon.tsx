@@ -1,31 +1,9 @@
-// import { useState } from "react";
-// import { Sidebar } from "primereact/sidebar";
-// import { Button } from "primereact/button";
-// import "primereact/resources/themes/md-dark-indigo/theme.css"; //theme
-// import "primereact/resources/primereact.min.css"; //core css
-// import "primeicons/primeicons.css";
-
-// function NaviRespon() {
-//   const [visible, setVisible] = useState<any>(false);
-
-//   return (
-//     <div>
-//       <Sidebar visible={visible} onHide={() => setVisible(false)}>
-//         Content
-//       </Sidebar>
-//       <Button icon="pi pi-arrow-right" onClick={(e) => setVisible(true)} />
-//     </div>
-//   );
-// }
-
-// export default NaviRespon;
-
 import { useState } from "react";
 import { Drawer, Button, Space } from "antd";
 import { DrawerProps } from "antd/es/drawer";
 import styled from "styled-components";
 import { MenuOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "../navigation/Navigation";
 
 const IconMenu = styled(Button)`
   margin-top: 13px;
