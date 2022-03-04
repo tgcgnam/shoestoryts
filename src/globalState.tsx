@@ -1,14 +1,13 @@
 import { createContext, useState } from "react";
 
+export const GlobalContext: any = createContext(GlobalState);
 
-export const GlobalContext:any  = createContext(GlobalState);
-
-function GlobalState({children}: any) {
+function GlobalState({ children }: any) {
   const [products, setProducts] = useState<[]>([]);
 
   const [productId, setProductId] = useState<number>();
 
-  const [favProducts, setFavProducts] = useState<string>(() => {
+  const [favProducts, setFavProducts] = useState<any[]>(() => {
     const favProducts = localStorage.getItem("favProds");
     if (favProducts) {
       return JSON.parse(favProducts);

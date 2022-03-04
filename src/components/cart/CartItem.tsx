@@ -134,39 +134,45 @@ function CartItem(props: any) {
           <img src={props.img} className="cart-img" alt="cart-item" />
           <p className="name">{props.name}</p>
         </div>
-        <select onChange={(e) => handleChooseSize(e)} className="sizes-select">
-          <option value="Sizes">
-            {props.chosenSize === "" ? "Sizes" : props.chosenSize}
-          </option>
-          {props.sizes.map((item: any) => {
-            if (item !== props.chosenSize) {
-              return (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              );
-            }
-          })}
-        </select>
-        <div className="quantity">
-          <div onClick={decrease}>–</div>
-          <div>{props.quantity}</div>
-          <div onClick={increase}>+</div>
-        </div>
-        <div className="price">
-          <span>Đơn giá</span>
-          <p>{handlePrice(props.price)}</p>
-        </div>
-        <div className="total">
-          <span>Tổng cộng</span>
-          <p>{handlePrice(props.price * props.quantity)}</p>
-        </div>
-        <div className="fas fa-trash trash-btn" onClick={trash}>
-          <FontAwesomeIcon icon={faTrash} />
-        </div>
-        <div className="buy-later" onClick={addToFavorite}>
-          Mua sau
-        </div>
+      <div className="one">
+          <select onChange={(e) => handleChooseSize(e)} className="sizes-select">
+            <option value="Sizes">
+              {props.chosenSize === "" ? "Sizes" : props.chosenSize}
+            </option>
+            {props.sizes.map((item: any) => {
+              if (item !== props.chosenSize) {
+                return (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                );
+              }
+            })}
+          </select>
+          <div className="quantity">
+            <div onClick={decrease}>–</div>
+            <div>{props.quantity}</div>
+            <div onClick={increase}>+</div>
+          </div>
+      </div>
+       <div className="two">
+          <div className="price">
+            <span>Đơn giá</span>
+            <p>{handlePrice(props.price)}</p>
+          </div>
+          <div className="total">
+            <span>Tổng cộng</span>
+            <p>{handlePrice(props.price * props.quantity)}</p>
+          </div>
+       </div>
+       <div className="three">
+          <div className="cart-del" onClick={trash}>
+            <FontAwesomeIcon icon={faTrash} />
+          </div>
+          <div className="buy-later" onClick={addToFavorite}>
+            Mua sau
+          </div>
+       </div>
       </div>
       {cartSizeWarnings[props.name] && (
         <p className="size-warning">Vui lòng chọn size cho sản phẩm</p>

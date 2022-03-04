@@ -16,9 +16,9 @@ input[type="number"] {
 .cart-container {
     // margin-top: 118px;
     // margin-left: 228px;
-    width: 80%;
+    // width: 80%;
     border-radius: 6px;
-    margin: auto;
+    margin: 30px;
     .cart-wrapper {
         margin: 48px 0;
         &::-webkit-scrollbar {
@@ -46,6 +46,16 @@ input[type="number"] {
         }
     }
     .cart-item {
+        .one,
+        .two,
+        .three {
+            display: flex;
+            .sizes-select,
+            .cart-del,
+            .price {
+                margin-right: 20px;
+            }
+        }
         padding: 12px;
         border-radius: 6px;
         background-color: #fff;
@@ -449,8 +459,11 @@ input[type="number"] {
 }
 
 @media (max-width: 1364px) {
+    .one {
+        display: flex;
+    }
     .cart-container {
-        width: 66%;
+        width: 95%;
         margin-top: 32px;
         margin-bottom: 168px;
         .cart-item {
@@ -496,12 +509,11 @@ input[type="number"] {
     .cart-container {
         .cart-item {
             position: relative;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-left: 48px;
+            flex-direction: row;
+            flex-wrap: wrap;
             margin-right: 0;
             .sizes-select {
-                margin-bottom: 12px;
+                margin-right: 20px;
                 padding: 8px 4px;
                 option {
                     outline: none;
@@ -535,11 +547,20 @@ input[type="number"] {
                 right: 16px;
                 bottom: 16px;
             }
+            .cart-del {
+                cursor: pointer;
+                 :hover {
+                    color: #a36e0f;
+                }
+            }
         }
     }
 }
 
 @media (max-width: 992px) {
+    .cart-item {
+        flex-direction: column;
+    }
     .customer-information {
         flex-direction: column;
         align-items: center;

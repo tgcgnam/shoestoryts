@@ -10,7 +10,6 @@ function CartWrapper() {
       <>
         <div className="cart-wrapper">
           <h5>Giỏ hàng của bạn</h5>
-
           {cart.length === 0 ? (
             <div className="empty-cart">
               <h2>Giỏ hàng của bạn đang trống !</h2>
@@ -18,7 +17,7 @@ function CartWrapper() {
           ) : (
             cart.map(
               (item: {
-                cartId: number;
+                cartId: number | undefined;
                 cartImg: string;
                 cartName: string;
                 cartQuantity: number;

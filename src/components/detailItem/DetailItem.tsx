@@ -21,7 +21,6 @@ function DetailItem({ prodId }: any) {
   });
   // console.log(setProduct)
   const [desc, setDesc]: any = useState({});
-  const [photo, setPhoto]: any = useState({});
   const [overlayPhoto, setOverlayPhoto]: any = useState();
   const [displayActualPhoto, setDisplayActualPhoto]: any = useState(false);
   const {
@@ -51,7 +50,6 @@ function DetailItem({ prodId }: any) {
     fetch(`https://tstoreserver.herokuapp.com/description/${prodId}`)
       .then((res) => res.json())
       .then((desc) => setDesc(desc));
-
   }, []);
   const { handlePrice } = globalFunction();
 
@@ -117,7 +115,8 @@ function DetailItem({ prodId }: any) {
                 {handlePrice(product.price / (1 - product.sale))}
               </span>
             </div>
-            <div>{product.condition}</div>
+            <div>Trạng thái: {product.condition}</div>
+            <br />
             <div className="quantity">
               <span>Số lượng</span>
               <div>
@@ -129,9 +128,6 @@ function DetailItem({ prodId }: any) {
             <div onClick={addToCart} className="order-btn">
               Thêm vào giỏ hàng
             </div>
-            <Link to={"/cart"} onClick={addToCart} className="order-btn">
-              Mua ngay
-            </Link>
             <div className="description">
               <p>{desc.content}</p>
             </div>
@@ -163,11 +159,11 @@ export default DetailItem;
 const DetailWrapper = styled.div`
   margin: 50px;
   .detail-item {
-    width: 80%;
+    /* width: 80%; */
     display: flex;
-    padding: 80px;
+    padding: 20px;
     border-radius: 20px;
-    background-color: #f5eedb;
+    /* background-color: #f5eedb; */
     .img-wrapper {
       img {
         border-radius: 8px;
@@ -289,6 +285,10 @@ const DetailWrapper = styled.div`
   }
 
   @media (max-width: 772px) {
+    margin: 0;
+    .info-wrapper {
+      margin-top: 20px !important;
+    }
     .detail-item-wrapper {
       margin-left: 0;
     }

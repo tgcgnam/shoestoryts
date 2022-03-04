@@ -1,57 +1,61 @@
+import { List, Row } from "antd";
+
 import { useContext } from "react";
 import { GlobalContext } from "../../globalState";
+import CartItem from "../cart/CartItem";
 import CartWarning from "../cart/CartWarning";
 import ProdItem from "../prodItem/ProdItem";
+import styled from "styled-components";
+import CartFav from "./CardFav";
 
-import "./FavoriteProd.scss";
+const ListFlex = styled.div`
+  .ant-row {
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+`;
 
 function FavoriteProd() {
   const { favProducts, isCartWarning } = useContext(GlobalContext);
   return (
-    <div className="favorite-container">
-      <div className="row">
+    <div
+      className="favorite-container"
+      style={{ padding: "30px", marginTop: "0px" }}
+    >
+      <h5>Sản phẩm yêu thích</h5>
+      <ListFlex className="Lists-fav">
         {favProducts.length === 0 ? (
           <div className="empty">
             <h1>Bạn không có sản phẩm yêu thích nào !</h1>
           </div>
         ) : (
-          favProducts.map(
-            (item: {
-              key: number;
-              id: number;
-              name: string;
-              condition: string;
-              status: string;
-              price: number;
-              sale: number;
-              img: string;
-              brand: string;
-              sizes: number;
-              material: string;
-              color: string;
-            }) => (
-              <ProdItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                condition={item.condition}
-                status={item.status}
-                price={item.price}
-                sale={item.sale}
-                img={item.img}
-                brand={item.brand}
-                sizes={item.sizes}
-                material={item.material}
-                color={item.color}
-                displayTrash
+          <List
+            dataSource={favProducts}
+            renderItem={(props) => (
+              <CartFav
+                key={props.id}
+                id={props.id}
+                name={props.name}
+                condition={props.condition}
+                status={props.status}
+                price={props.price}
+                sale={props.sale}
+                img={props.img}
+                brand={props.brand}
+                sizes={props.sizes}
+                material={props.material}
+                color={props.color}
+                displayTrash={undefined}
                 image2={""}
                 image3={""}
                 image4={""}
-              />
-            )
-          )
+              ></CartFav>
+            )}
+          />
         )}
-      </div>
+      </ListFlex>
       {isCartWarning && <CartWarning />}
     </div>
   );

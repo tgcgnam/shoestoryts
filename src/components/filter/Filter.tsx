@@ -10,10 +10,9 @@ function Filter({ updateFilter }: any) {
   };
   return (
     <>
-      <br />
       <Form.Item>
-        <Select value={value} onChange={handleChange}>
-          <Select.Option value="default">Mặc định</Select.Option>
+        <Select onChange={handleChange} defaultValue={"default"}>
+          <Select.Option value="default">Bộ lọc</Select.Option>
           <Select.Option value="hTl">Giá cao &gt; thấp</Select.Option>
           <Select.Option value="lTh">Giá thấp &gt; cao</Select.Option>
         </Select>

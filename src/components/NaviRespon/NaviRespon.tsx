@@ -36,11 +36,10 @@ const DrawerCustom = styled(Drawer)`
   .ant-drawer-body {
     padding: 0 !important;
   }
+
 `;
 const Navi = styled(Navigation)`
-  .ant-layout.ant-layout-has-sider {
-    top: 60px !important;
-  }
+
 `;
 
 function NaviRespon() {

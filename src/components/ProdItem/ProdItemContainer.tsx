@@ -107,7 +107,7 @@ function openMessage(): void {
 }
 
 const ListItem = styled(List)`
-  margin-top: 40px;
+  /* margin-top: 40px; */
   .ant-row {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -166,28 +166,25 @@ function ProdItemContainer({ quantity }: iQty, _props: iCart) {
    }
  }, [keyword]);
   //
-  const onSearch = (e: { target: { value: SetStateAction<string>; }; }) => {
-   setKeyword(e.target.value);
-  };
   return (
     <MainProd className="products-main">
-      <Row>
-        <Col className="gutter-row" span={6}>
+      <Row
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "40px",
+        }}
+      >
+        <Col className="gutter-row" span={4} style={{ marginLeft: "16px" }}>
           <Search
-            placeholder="input search text"
-            onSearch={onSearch}
+            placeholder="Tìm kiếm sản phẩm..."
             style={{ width: 200 }}
             type="text"
-            value={keyword}
+            // value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
-          {/* <Input
-            type="text"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-          /> */}
         </Col>
-        <Col className="gutter-row" span={6}>
+        <Col className="gutter-row" span={3} style={{ marginRight: "16px" }}>
           <Filter updateFilter={updateFilter} />
         </Col>
       </Row>

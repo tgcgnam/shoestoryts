@@ -7,6 +7,8 @@ import {
   ShoppingCartOutlined,
   HeartFilled,
   CopyrightOutlined,
+  ShoppingFilled,
+  HomeFilled,
 } from "@ant-design/icons";
 
 import styled from "styled-components";
@@ -14,40 +16,52 @@ import styled from "styled-components";
 const { Sider } = Layout;
 
 import "antd/dist/antd.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVuejs } from "@fortawesome/free-brands-svg-icons";
 
 const NavLayout = styled(Layout)`
   margin-top: 60px;
   ul {
     border: none;
   }
- 
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #f0f0f0 !important;
+  }
+  background-color: #fff;
 `;
 
 const LiItem = styled(Menu.Item)`
-  align-items: baseline !important;
+  padding: 30px !important;
   margin-bottom: 30px !important;
+
+  :hover {
+    background-color: #f0f0f0 !important;
+  }
+  :hover:last-child{
+    background-color: #fff !important;
+    margin-left: 12px;
+    transition: all 1.2s linear;
+  }
   :last-child {
-    margin-bottom: 0 !important;
   }
   :active {
   }
   :after {
-    background-color: #dadada;
-    border-right: 3px solid #f8c052 !important;
+    border-right: 3px solid #dadada !important;
   }
 
   .ant-menu-title-content {
     a:hover {
-      color: #f8c052 !important;
+      color: #333 !important;
     }
     .active {
-      color: #f8c052;
+      color: #333 !important;
     }
   }
   .quantity {
     position: absolute;
     top: 0;
-    left: 38px;
+    right: 72px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,22 +70,27 @@ const LiItem = styled(Menu.Item)`
     border-radius: 50%;
     background-color: tomato;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
+  
 `;
 
 const LinkItem = styled(NavLink)`
+  padding-top: 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  color: #333 !important;
   svg {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   .Badge {
     display: flex;
   }
   p {
     margin-bottom: 0;
-    padding-left: 12px;
+    font-size: 1.4rem !important;
+    /* padding-left: 12px; */
   }
 `;
 
@@ -100,14 +119,13 @@ function Navigation() {
           <Menu theme="light" mode="inline" defaultSelectedKeys={["6"]}>
             <LiItem key="6">
               <LinkItem to="/">
-                <HomeOutlined />
-
+                <HomeFilled />
                 <p> Trang chủ </p>
               </LinkItem>
             </LiItem>
             <LiItem key="5">
               <LinkItem to="/cart">
-                <ShoppingCartOutlined />
+                <ShoppingFilled />
                 <p> Giỏ hàng </p>
               </LinkItem>
               {cart.length !== 0 && (
@@ -131,13 +149,13 @@ function Navigation() {
             </LiItem>
             <LiItem key="2">
               <LinkItem to="/vans">
-                <img src="/vuejs-brands.svg" alt="" style={{ width: "15%" }} />
+                <FontAwesomeIcon icon={faVuejs} />
                 <p> Vans </p>
               </LinkItem>
             </LiItem>
             <LiItem key="1">
               <a href="/choose-size/size.html" target="_blank">
-                <i className="fab fa-pushed"> </i> <p> Hướng dẫn chọn size </p>
+                <i className="fab fa-pushed"> </i> <p style={{fontSize:"14px", textAlign:"center"}}> Hướng dẫn chọn size </p>
               </a>
             </LiItem>
           </Menu>

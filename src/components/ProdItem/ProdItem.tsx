@@ -8,6 +8,8 @@ import { GlobalContext } from "../../globalState";
 import "./ProdItem.scss";
 import { iCart } from "antd/lib/list";
 import "antd/dist/antd.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 // styled
 const CardProd = styled(Card)`
@@ -123,7 +125,6 @@ const CardProd = styled(Card)`
   }
 `;
 
-
 function ProdItem(props: iCart) {
   const { handlePrice } = globalFunction();
 
@@ -137,7 +138,6 @@ function ProdItem(props: iCart) {
   } = useContext(GlobalContext);
 
   const addToCart = () => {
-   
     let newData = [...cart];
     let check = true;
 
@@ -195,12 +195,8 @@ function ProdItem(props: iCart) {
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
         </div>
-   
-        <Link
-          // onClick={showModal}
-          to={`/detail/${props.id}`}
-          style={{ textAlign: "center" }}
-        >
+
+        <Link to={`/detail/${props.id}`} style={{ textAlign: "center" }}>
           <img src={props.img} />
           <p>{props.name}</p>
         </Link>
@@ -216,10 +212,6 @@ function ProdItem(props: iCart) {
           <span>{props.condition === "Tạm Hết hàng" && "Tạm Hết hàng"}</span>
         </div>
       </div>
-
-      {props.displayTrash && (
-        <div onClick={deleteFavProd} className="delete-btn fas fa-trash"></div>
-      )}
     </CardProd>
   );
 }

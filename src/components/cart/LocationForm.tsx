@@ -1,9 +1,15 @@
 import useLocationForm from "./Address";
+import { useEffect } from "react";
 import Select from "react-select";
+
 
 function LocationForm() {
   const { state, onCitySelect, onDistrictSelect, onWardSelect } =
     useLocationForm(true);
+
+useEffect(() => {
+    fetch(``)
+}, []);
 
   const {
     cityOptions,
@@ -19,7 +25,7 @@ function LocationForm() {
       <div>
         <Select
           name="cityId"
-          key={`cityId_${selectedCity?.value}`}
+        //   key={`cityId_${selectedCity?.value}`}
           isDisabled={cityOptions.length === 0}
           options={cityOptions}
           onChange={(option) => onCitySelect(option)}
@@ -29,7 +35,7 @@ function LocationForm() {
 
         <Select
           name="districtId"
-          key={`districtId_${selectedDistrict?.value}`}
+        //   key={`districtId_${selectedDistrict?.value}`}
           isDisabled={districtOptions.length === 0}
           options={districtOptions}
           onChange={(option) => onDistrictSelect(option)}
@@ -39,7 +45,7 @@ function LocationForm() {
 
         <Select
           name="wardId"
-          key={`wardId_${selectedWard?.value}`}
+        //   key={`wardId_${selectedWard?.value}`}
           isDisabled={wardOptions.length === 0}
           options={wardOptions}
           placeholder="Phường/Xã"

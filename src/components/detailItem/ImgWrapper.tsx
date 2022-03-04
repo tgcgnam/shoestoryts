@@ -26,7 +26,19 @@ const ImagesGallery = ({ id }: { id: number }) => {
 
   imagesEntries.shift();
 
-  return <>{images ? <ImageGallery items={imagesEntries} /> : null}</>;
+  return (
+    <>
+      {images ? (
+        <ImageGallery
+          autoPlay={true}
+          showPlayButton={false}
+          showFullscreenButton={false}
+          items={imagesEntries}
+          showNav={false}
+        />
+      ) : null}
+    </>
+  );
 };
 
 export default ImagesGallery;
