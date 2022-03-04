@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { ReactChild, ReactFragment, ReactPortal, useContext } from "react";
 import { Card, Button, message, Modal } from "antd";
 import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../globalFunction";
 import { GlobalContext } from "../../globalState";
 import "./ProdItem.scss";
-import { iCart } from "antd/lib/list";
+
 import "antd/dist/antd.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 // styled
 const CardProd = styled(Card)`
@@ -125,7 +123,19 @@ const CardProd = styled(Card)`
   }
 `;
 
-function ProdItem(props: iCart) {
+function ProdItem(props: {
+  condition: string;
+  id: any;
+  img: string | undefined;
+  name: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+  price: number;
+  sale: number;
+  status: any;
+  brand: any;
+  sizes: any;
+  material: any;
+  color: any;
+}) {
   const { handlePrice } = globalFunction();
 
   const {
@@ -181,13 +191,7 @@ function ProdItem(props: iCart) {
     }
   };
 
-  const deleteFavProd = () => {
-    let newData = [...favProducts];
 
-    const filterFavProducts = newData.filter((item) => item.id !== props.id);
-
-    setFavProducts(filterFavProducts);
-  };
 
   return (
     <CardProd className="">

@@ -5,7 +5,7 @@ import ActualPhoto from "../actualPhoto/ActualPhoto";
 import CartWarning from "../cart/CartWarning";
 import Slider from "react-slick";
 import "react-image-gallery/styles/scss/image-gallery.scss";
-import "./DetailItem.scss";
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ImageGallery from "react-image-gallery";

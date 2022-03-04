@@ -4,7 +4,7 @@ import { GlobalContext } from "../globalState";
 import { Button, List, Space } from "antd";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-import { iCart } from "antd/lib/list";
+
 
 const ListItem = styled(List)`
   margin-top: 40px;
@@ -14,7 +14,7 @@ const ListItem = styled(List)`
   }
 `;
 
-function VansPage(_props: iCart) {
+function VansPage() {
   const { brandItems, setBrandItems, isLoader, setIsLoader } =
     useContext(GlobalContext);
 
@@ -26,13 +26,10 @@ function VansPage(_props: iCart) {
       .then(() => setIsLoader(false));
   }, []);
 
-
-
   // vansItem
   const Vans = brandItems.filter(
     (item: { brand: string }) => item.brand == "vans"
   );
-
 
   return (
     <div className="prods-container brand-container">
@@ -50,7 +47,7 @@ function VansPage(_props: iCart) {
           xxl: 4,
         }}
         dataSource={Vans}
-        renderItem={(props) => {
+        renderItem={(props):any => {
           return (
             <ProdItem
               key={props.id}
@@ -65,10 +62,6 @@ function VansPage(_props: iCart) {
               sizes={props.sizes}
               material={props.material}
               color={props.color}
-              displayTrash={undefined}
-              image2={""}
-              image3={""}
-              image4={""}
             ></ProdItem>
           );
         }}

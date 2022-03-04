@@ -1,4 +1,4 @@
-import { iCart } from "antd/lib/list";
+
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Card, Button, message, Modal } from "antd";
@@ -10,7 +10,7 @@ import { GlobalContext } from "../../globalState";
 
 import "antd/dist/antd.css";
 
-export default function CardTest({ listing }: any,props: iCart) {
+export default function CardTest(props:any) {
     const { handlePrice } = globalFunction();
 
     const {

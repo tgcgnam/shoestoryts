@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import ProdItem from "../components/prodItem/ProdItem";
-import { iCart } from "antd/lib/list";
+
 import { GlobalContext } from "../globalState";
 import { Button, List } from "antd";
 
@@ -15,7 +15,7 @@ const ListItem = styled(List)`
   }
 `;
 
-function Vans(_props: iCart) {
+function Vans() {
   const { brandItems, setBrandItems, isLoader, setIsLoader } =
     useContext(GlobalContext);
 
@@ -47,7 +47,7 @@ function Vans(_props: iCart) {
           xxl: 4,
         }}
         dataSource={Converse}
-        renderItem={(props) => {
+        renderItem={(props):any => {
           return (
             <ProdItem
               key={props.id}
@@ -62,10 +62,6 @@ function Vans(_props: iCart) {
               sizes={props.sizes}
               material={props.material}
               color={props.color}
-              displayTrash={undefined}
-              image2={""}
-              image3={""}
-              image4={""}
             ></ProdItem>
           );
         }}

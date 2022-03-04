@@ -32,11 +32,7 @@ const NavHeader = styled(Layout)`
   }
 `;
 
-
 function LayoutPage() {
-
-
- 
   return (
     <>
       <NavHeader style={{ background: "#fff" }}>
@@ -51,20 +47,8 @@ function LayoutPage() {
           <Content>
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
-              <Route
-                path="/converse"
-                element={
-                  <ConversePage displayTrash={undefined} id={0} price={0} img={""} image2={""} image3={""} image4={""} name={""} sale={0} status={""} condition={""} brand={""} sizes={0} material={""} color={""}             
-                  />
-                }
-              ></Route>
-              <Route
-                path="/vans"
-                element={
-                  <VansPage displayTrash={undefined} id={0} price={0} img={""} image2={""} image3={""} image4={""} name={""} sale={0} status={""} condition={""} brand={""} sizes={0} material={""} color={""}                   
-                  />
-                }
-              ></Route>
+              <Route path="/converse" element={<ConversePage />}></Route>
+              <Route path="/vans" element={<VansPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
               <Route path="/favorite" element={<FavoritePage />}></Route>
               <Route path="/detail/:id" element={<DetailPage />}></Route>

@@ -2,11 +2,12 @@ import { List, Row } from "antd";
 
 import { useContext } from "react";
 import { GlobalContext } from "../../globalState";
-import CartItem from "../cart/CartItem";
+
 import CartWarning from "../cart/CartWarning";
-import ProdItem from "../prodItem/ProdItem";
+
 import styled from "styled-components";
 import CartFav from "./CardFav";
+
 
 const ListFlex = styled.div`
   .ant-row {
@@ -33,7 +34,7 @@ function FavoriteProd() {
         ) : (
           <List
             dataSource={favProducts}
-            renderItem={(props) => (
+            renderItem={(props):any => (
               <CartFav
                 key={props.id}
                 id={props.id}

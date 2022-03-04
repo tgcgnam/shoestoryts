@@ -1,6 +1,6 @@
-import { iCart } from "antd/lib/list";
 
-function SearchForm(props: iCart) {
+
+function SearchForm() {
     return ( 
         <div></div>
      );
