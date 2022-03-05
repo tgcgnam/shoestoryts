@@ -4,7 +4,7 @@ import { GlobalContext } from "../../utils/globalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-import Filter from "../filter/Filter";
+
 import Search from "antd/lib/input/Search";
 
 const key: string = "updatable";
@@ -25,7 +25,10 @@ const ListItem = styled(List)`
 const MainProd = styled.div`
   text-align: center;
   .btn-see {
+    margin-top: 15px;
+    background-color: #f8c052;
     margin-bottom: 30px;
+    border-radius: 5px;
   }
 `;
 
@@ -54,11 +57,6 @@ function ProdItemContainer({ quantity }: iQty) {
   const Products = products.filter(
     (item: { id: number }) => item.id - 1 < (seeMore ? 24 : quantity)
   );
-  const [, setFilter] = useState();
-
-  const updateFilter = (value: undefined) => {
-    setFilter(value);
-  };
 
   const [keyword, setKeyword] = useState<string>(" ");
 
@@ -74,26 +72,12 @@ function ProdItemContainer({ quantity }: iQty) {
   //
   return (
     <MainProd className="products-main">
-      <Row
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "40px",
-        }}
-      >
-        <Col className="gutter-row" span={4} style={{ marginLeft: "16px" }}>
-          <Search
-            placeholder="Tìm kiếm sản phẩm..."
-            style={{ width: 200 }}
-            type="text"
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-        </Col>
-        <Col className="gutter-row" span={3} style={{ marginRight: "16px" }}>
-          <Filter updateFilter={updateFilter} />
-        </Col>
-      </Row>
-
+      <Search
+        placeholder="Tìm kiếm sản phẩm..."
+        style={{ width: 200, marginTop: "20px", marginBottom: "10px"}}
+        type="text"
+        onChange={(e) => setKeyword(e.target.value)}
+      />
       <ListItem
         grid={{
           gutter: 16,

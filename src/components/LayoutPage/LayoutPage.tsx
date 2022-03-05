@@ -13,11 +13,23 @@ import styled from "styled-components";
 const { Header, Footer, Sider, Content } = Layout;
 import "antd/dist/antd.css";
 import NaviRespon from "../naviRespon/NaviRespon";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {
     display: none;
     transition: all 0.16s linear;
+  }
+`;
+const SbackTop = styled(BackTop)`
+  background: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  svg {
+    margin-top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
   }
 `;
 
@@ -54,9 +66,9 @@ function LayoutPage() {
         </Layout>
         <Footer style={{ background: "#f0f2f5" }}>
           <FooterPage />
-          <BackTop>
-            <div>UP</div>
-          </BackTop>
+          <SbackTop>
+            <FontAwesomeIcon icon={faArrowUp} />
+          </SbackTop>
         </Footer>
       </NavHeader>
     </>

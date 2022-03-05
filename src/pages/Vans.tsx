@@ -34,6 +34,7 @@ function VansPage() {
       <div className="brand-banner">
         <img src="/images/vans_banner.jpg" alt="vans banner" />
       </div>
+      
       <ListItem
         grid={{
           gutter: 16,
