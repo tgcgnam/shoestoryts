@@ -6,6 +6,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Inputcheck from "../inputcheck/Inputcheck";
 import CartWrapper from "./CartWrapper";
 import Order from "./Order";
+import SelectCity from "./SelectCity";
 
 function CartContainer() {
   const {
@@ -317,6 +318,7 @@ function CartContainer() {
           <div onClick={submitInfo} className="confirm-info-btn">
             Xác nhận thông tin
           </div>
+          <SelectCity />
         </div>
       </div>
       <Order />

@@ -47,7 +47,7 @@ function VansPage() {
           xxl: 4,
         }}
         dataSource={Vans}
-        renderItem={(props):any => {
+        renderItem={(props: any) => {
           return (
             <ProdItem
               key={props.id}

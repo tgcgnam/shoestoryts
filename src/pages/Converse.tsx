@@ -47,7 +47,7 @@ function Vans() {
           xxl: 4,
         }}
         dataSource={Converse}
-        renderItem={(props):any => {
+        renderItem={(props: any) => {
           return (
             <ProdItem
               key={props.id}

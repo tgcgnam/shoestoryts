@@ -125,16 +125,16 @@ const CardProd = styled(Card)`
 
 function ProdItem(props: {
   condition: string;
-  id: any;
+  id: number;
   img: string | undefined;
-  name: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+  name: string;
   price: number;
   sale: number;
-  status: any;
-  brand: any;
-  sizes: any;
-  material: any;
-  color: any;
+  status: string;
+  brand: string;
+  sizes: number;
+  material: string;
+  color: string;
 }) {
   const { handlePrice } = globalFunction();
 

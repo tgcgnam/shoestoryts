@@ -111,7 +111,7 @@ function ProdItemContainer({ quantity }: iQty) {
           xxl: 4,
         }}
         dataSource={Products}
-        renderItem={(props):any => (
+        renderItem={(props: any) => (
           <ProdItem
             key={props.id}
             id={props.id}

@@ -34,7 +34,7 @@ function FavoriteProd() {
         ) : (
           <List
             dataSource={favProducts}
-            renderItem={(props):any => (
+            renderItem={(props: any) => (
               <CartFav
                 key={props.id}
                 id={props.id}

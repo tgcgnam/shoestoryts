@@ -87,7 +87,7 @@ function Order() {
     }
   };
 
-  console.log(orderedProds);
+
 
   return (
     <div className="order-container">
