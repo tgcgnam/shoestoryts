@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 
 function CartWarning() {
   const { setIsCartWarning } = useContext(GlobalContext);

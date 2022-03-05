@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 import CartItem from "./CartItem";
 
 function CartWrapper() {
     const { cart } = useContext(GlobalContext)
-    
-
+  
     return (
       <>
         <div className="cart-wrapper">

@@ -1,14 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { GlobalContext } from "../../globalState";
-import globalFunction from "../../globalFunction";
-import ActualPhoto from "../actualPhoto/ActualPhoto";
+import { GlobalContext } from "../../utils/globalState";
+import globalFunction from "../../utils/globalFunction";
+// import ActualPhoto from "../actualPhoto/ActualPhoto";
 import CartWarning from "../cart/CartWarning";
-import Slider from "react-slick";
 import "react-image-gallery/styles/scss/image-gallery.scss";
-
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ImageGallery from "react-image-gallery";
 import ImagesGallery from "./ImgWrapper";
 
 function DetailItem({ prodId }: any) {
@@ -21,12 +17,8 @@ function DetailItem({ prodId }: any) {
   });
   // console.log(setProduct)
   const [desc, setDesc]: any = useState({});
-  const [overlayPhoto, setOverlayPhoto]: any = useState();
-  const [displayActualPhoto, setDisplayActualPhoto]: any = useState(false);
   const {
-    imgLink,
     setImgLink,
-    setIsDisplayNav,
     quantity,
     setQuantity,
     cart,
@@ -37,8 +29,6 @@ function DetailItem({ prodId }: any) {
     setIsAddCartSuccess,
     isSoldOut,
     setIsSoldOut,
-    isLoader,
-    setIsLoader,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -141,7 +131,7 @@ function DetailItem({ prodId }: any) {
           </div>
         )}
         {isCartWarning && <CartWarning />}
-        {displayActualPhoto && <ActualPhoto overlayPhoto={overlayPhoto} />}
+        {/* {displayActualPhoto && <ActualPhoto overlayPhoto={overlayPhoto} />} */}
         {isSoldOut && (
           <div className="add-fav" onClick={() => setIsSoldOut(false)}>
             <div className="add-fav-inner warn">
@@ -159,11 +149,9 @@ export default DetailItem;
 const DetailWrapper = styled.div`
   margin: 50px;
   .detail-item {
-    /* width: 80%; */
     display: flex;
     padding: 20px;
     border-radius: 20px;
-    /* background-color: #f5eedb; */
     .img-wrapper {
       img {
         border-radius: 8px;

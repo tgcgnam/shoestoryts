@@ -1,9 +1,8 @@
-import { Carousel, Skeleton } from "antd";
+import { Carousel } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 
 const BannerMain = styled(Carousel)`
-
 margin: 56px 8px 0 8px;
   & > div {
     position: unset !important;
@@ -101,19 +100,6 @@ function Banner() {
         <img src="/images/banner3.jpg" alt="banner3" />
       </div>
     </BannerMain>
-    // <div className="banner">
-    //   <Slider {...settings}>
-    //     <div className="item1">
-    //       <img src="/images/banner1.jpg" alt="banner1" />
-    //     </div>
-    //     <div className="item2">
-    //       <img src="/images/banner2.jpg" alt="banner2" />
-    //     </div>
-    //     <div className="item3">
-    //       <img src="/images/banner3.jpg" alt="banner3" />
-    //     </div>
-    //   </Slider>
-    // </div>
   );
 }
 

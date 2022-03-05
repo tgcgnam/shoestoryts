@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
-import { ReactChild, ReactFragment, ReactPortal, useContext } from "react";
-import { Card, Button, message, Modal } from "antd";
-import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
+import { useContext } from "react";
+import { Card, message } from "antd";
+import { ShoppingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import globalFunction from "../../globalFunction";
-import { GlobalContext } from "../../globalState";
-import "./ProdItem.scss";
+import globalFunction from "../../utils/globalFunction";
+import { GlobalContext } from "../../utils/globalState";
 
 import "antd/dist/antd.css";
 
 // styled
 const CardProd = styled(Card)`
   border: none;
-
   .cart-fav-btn {
     position: absolute;
     top: 14px;
@@ -138,14 +136,8 @@ function ProdItem(props: {
 }) {
   const { handlePrice } = globalFunction();
 
-  const {
-    cart,
-    setCart,
-    setIsCartWarning,
-    favProducts,
-    setFavProducts,
-    setIsSoldOut,
-  } = useContext(GlobalContext);
+  const { cart, setCart, setIsCartWarning, setIsSoldOut } =
+    useContext(GlobalContext);
 
   const addToCart = () => {
     let newData = [...cart];
@@ -186,12 +178,9 @@ function ProdItem(props: {
           cartChosenSize: "",
         });
       }
-
       setCart(newData);
     }
   };
-
-
 
   return (
     <CardProd className="">
@@ -199,7 +188,6 @@ function ProdItem(props: {
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
         </div>
-
         <Link to={`/detail/${props.id}`} style={{ textAlign: "center" }}>
           <img src={props.img} />
           <p>{props.name}</p>

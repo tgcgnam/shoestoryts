@@ -1,15 +1,12 @@
-import GlobalState from "./globalState";
+import GlobalState from "./utils/globalState";
 import LayoutPage from "./components/layoutPage/LayoutPage";
 import "./App.scss";
 
-
 function App() {
-
-
   return (
     <div className="App">
       <GlobalState>
-        <LayoutPage/>
+        <LayoutPage />
       </GlobalState>
     </div>
   );

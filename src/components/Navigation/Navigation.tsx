@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 import { Layout, Menu } from "antd";
 import {
-  HomeOutlined,
-  ShoppingCartOutlined,
   HeartFilled,
   CopyrightOutlined,
   ShoppingFilled,
@@ -37,7 +35,7 @@ const LiItem = styled(Menu.Item)`
   :hover {
     background-color: #f0f0f0 !important;
   }
-  :hover:last-child{
+  :hover:last-child {
     background-color: #fff !important;
     margin-left: 12px;
     transition: all 1.2s linear;
@@ -72,7 +70,6 @@ const LiItem = styled(Menu.Item)`
     color: #fff;
     font-size: 1.3rem;
   }
-  
 `;
 
 const LinkItem = styled(NavLink)`
@@ -90,27 +87,14 @@ const LinkItem = styled(NavLink)`
   p {
     margin-bottom: 0;
     font-size: 1.4rem !important;
-    /* padding-left: 12px; */
   }
 `;
 
 function Navigation() {
   const {
-    isHideNav,
-    setIsHideNav,
     cart,
     isUpdatedFavorite,
-    setIsUpdatedFavorite,
   }: any = useContext(GlobalContext);
-
-  const hideNav = () => {
-    setIsHideNav(true);
-  };
-
-  const handleFavNav = () => {
-    hideNav();
-    setIsUpdatedFavorite(false);
-  };
 
   return (
     <div className="navigation">
@@ -155,7 +139,11 @@ function Navigation() {
             </LiItem>
             <LiItem key="1">
               <a href="/choose-size/size.html" target="_blank">
-                <i className="fab fa-pushed"> </i> <p style={{fontSize:"14px", textAlign:"center"}}> Hướng dẫn chọn size </p>
+                <i className="fab fa-pushed"> </i>{" "}
+                <p style={{ fontSize: "14px", textAlign: "center" }}>
+                  {" "}
+                  Hướng dẫn chọn size{" "}
+                </p>
               </a>
             </LiItem>
           </Menu>

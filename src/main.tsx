@@ -6,7 +6,7 @@ import { ConfigProvider } from "antd";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ConfigProvider direction="ltr" autoInsertSpaceInButton>
+    <ConfigProvider direction="ltr">
       <BrowserRouter>
         <App />
       </BrowserRouter>

@@ -1,10 +1,9 @@
-import { Button, Col, Input, List, message, Row } from "antd";
-import { useEffect, useContext, useState, Key, SetStateAction } from "react";
-import { GlobalContext } from "../../globalState";
+import { Button, Col, List, message, Row } from "antd";
+import { useEffect, useContext, useState } from "react";
+import { GlobalContext } from "../../utils/globalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-// import { iCart } from "antd/lib/list";
 import Filter from "../filter/Filter";
 import Search from "antd/lib/input/Search";
 
@@ -18,7 +17,6 @@ function openMessage(): void {
 }
 
 const ListItem = styled(List)`
-  /* margin-top: 40px; */
   .ant-row {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -56,17 +54,14 @@ function ProdItemContainer({ quantity }: iQty) {
   const Products = products.filter(
     (item: { id: number }) => item.id - 1 < (seeMore ? 24 : quantity)
   );
-  const [filter, setFilter] = useState();
+  const [, setFilter] = useState();
 
   const updateFilter = (value: undefined) => {
     setFilter(value);
   };
 
-  //
-  //  const [prod, setProd] = useState<[]>([]);
   const [keyword, setKeyword] = useState<string>(" ");
 
-  // console.log(keyword);
   useEffect(() => {
     if (keyword != " ") {
       fetch(
@@ -91,7 +86,6 @@ function ProdItemContainer({ quantity }: iQty) {
             placeholder="Tìm kiếm sản phẩm..."
             style={{ width: 200 }}
             type="text"
-            // value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
         </Col>

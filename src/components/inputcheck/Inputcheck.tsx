@@ -2,8 +2,8 @@ interface iType {
   title: string;
   name: string;
   type: string;
-  handleChange: (e:EventInit) => void;
-  handleError: (e:EventInit) => void;
+  handleChange: (e: EventInit) => void;
+  handleError: (e: EventInit) => void;
 }
 function Inputcheck(props: iType) {
   return (

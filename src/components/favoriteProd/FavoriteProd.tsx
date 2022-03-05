@@ -1,13 +1,9 @@
-import { List, Row } from "antd";
-
+import { List } from "antd";
 import { useContext } from "react";
-import { GlobalContext } from "../../globalState";
-
+import { GlobalContext } from "../../utils/globalState";
 import CartWarning from "../cart/CartWarning";
-
 import styled from "styled-components";
 import CartFav from "./CardFav";
-
 
 const ListFlex = styled.div`
   .ant-row {

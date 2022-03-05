@@ -1,12 +1,12 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Inputcheck from "../inputcheck/Inputcheck";
 import CartWrapper from "./CartWrapper";
 import Order from "./Order";
-import SelectCity from "./SelectCity";
+// import SelectCity from "./SelectCity";
 
 function CartContainer() {
   const {
@@ -318,10 +318,10 @@ function CartContainer() {
           <div onClick={submitInfo} className="confirm-info-btn">
             Xác nhận thông tin
           </div>
-          <SelectCity />
+          {/* <SelectCity /> */}
         </div>
+        <Order />
       </div>
-      <Order />
 
       {isRemoveWarning && (
         <div className="remove-warning">

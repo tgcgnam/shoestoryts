@@ -40,8 +40,6 @@ const Wrapper = styled.div`
     }
 
     .svg-inline--fa {
-      /* height: 25px; */
-      /* width: 25px; */
       border-radius: 50%;
       font-size: 25px;
       display: flex;
@@ -136,10 +134,7 @@ const ListBig = styled(Row)`
   display: flex;
   flex-wrap: wrap !important;
   justify-content: space-around;
-  .ant-col {
-    /* display: flex;
-    justify-content: center; */
-  }
+
   p:first-child {
     font-family: "Kaushan Script", cursive;
     font-size: 1.9rem;

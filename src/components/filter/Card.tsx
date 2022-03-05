@@ -1,11 +1,10 @@
-
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import { Card, Button, message, Modal } from "antd";
-import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
+import { useContext,  } from "react";
+import { Card, message,  } from "antd";
+import { ShoppingOutlined,  } from "@ant-design/icons";
 import styled from "styled-components";
-import globalFunction from "../../globalFunction";
-import { GlobalContext } from "../../globalState";
+import globalFunction from "../../utils/globalFunction";
+import { GlobalContext } from "../../utils/globalState";
 
 
 import "antd/dist/antd.css";

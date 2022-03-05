@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 import { PageHeader } from "antd";
 import styled from "styled-components";
-import "./Logo.scss";
 import "antd/dist/antd.css";
 
 //styled
@@ -38,6 +37,7 @@ const Header = styled(PageHeader)`
     }
     p {
       font-family: "Kaushan Script", cursive;
+      font-weight: bold;
       font-size: 1.9rem;
       color: #000;
       margin: 0;

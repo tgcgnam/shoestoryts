@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import globalFunction from "../../globalFunction";
+import globalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
 

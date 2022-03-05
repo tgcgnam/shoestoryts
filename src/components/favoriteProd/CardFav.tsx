@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import globalFunction from "../../globalFunction";
+import globalFunction from "../../utils/globalFunction";
 import styled from "styled-components";
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 
 const CarItem = styled.div`
   padding: 12px;
@@ -14,9 +14,9 @@ const CarItem = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-@media (max-width:991px){
+  @media (max-width: 991px) {
     text-align: center;
-}
+  }
   .cart-left {
     width: 50%;
     .cart-img {

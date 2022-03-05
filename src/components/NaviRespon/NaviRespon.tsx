@@ -36,11 +36,8 @@ const DrawerCustom = styled(Drawer)`
   .ant-drawer-body {
     padding: 0 !important;
   }
-
 `;
-const Navi = styled(Navigation)`
-
-`;
+const Navi = styled(Navigation)``;
 
 function NaviRespon() {
   const [visible, setVisible] = useState(false);

@@ -13,8 +13,8 @@ function Filter({ updateFilter }: any) {
       <Form.Item>
         <Select onChange={handleChange} defaultValue={"default"}>
           <Select.Option value="default">Bộ lọc</Select.Option>
-          <Select.Option value="hTl">Giá cao &gt; thấp</Select.Option>
-          <Select.Option value="lTh">Giá thấp &gt; cao</Select.Option>
+          <Select.Option value="hTl">Giá : cao &gt; thấp</Select.Option>
+          <Select.Option value="lTh">Giá : thấp &gt; cao</Select.Option>
         </Select>
       </Form.Item>
     </>

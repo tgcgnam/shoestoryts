@@ -1,14 +1,9 @@
-
-
 import { useState, useEffect } from "react";
-
-
 
 function SearchProd() {
   const [prod, setProd] = useState<[]>([]);
   const [keyword, setKeyword] = useState<string>(" ");
   console.log(prod);
-  // console.log(keyword);
   useEffect(() => {
     if (keyword != "") {
       fetch(`https://shoestory-server.herokuapp.com/products/?q=` + keyword)
@@ -24,10 +19,6 @@ function SearchProd() {
           value={keyword}
           onChange={(e) => setKeyword(e.target.value.trim())}
         />
-      </div>
-
-      <div className="main">
-       
       </div>
     </div>
   );

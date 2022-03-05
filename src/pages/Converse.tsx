@@ -1,8 +1,8 @@
 import { useEffect, useContext } from "react";
 import ProdItem from "../components/prodItem/ProdItem";
 
-import { GlobalContext } from "../globalState";
-import { Button, List } from "antd";
+import { GlobalContext } from "../utils/globalState";
+import { List } from "antd";
 
 import "antd/dist/antd.css";
 import styled from "styled-components";
@@ -16,15 +16,13 @@ const ListItem = styled(List)`
 `;
 
 function Vans() {
-  const { brandItems, setBrandItems, isLoader, setIsLoader } =
+  const { brandItems, setBrandItems} =
     useContext(GlobalContext);
 
   useEffect(() => {
-    setIsLoader(true);
     fetch("https://shoestory-server.herokuapp.com/products")
       .then((res) => res.json())
       .then((brandItems) => setBrandItems(brandItems))
-      .then(() => setIsLoader(false));
   }, []);
 
   const Converse = brandItems.filter(

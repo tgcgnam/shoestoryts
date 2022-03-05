@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import globalFunction from "../../globalFunction";
+import globalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../globalState";
+import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
 
@@ -17,7 +17,6 @@ function Order() {
     setCartSizeWarnings,
     setIsOrderSuccess,
     setCart,
-    orderedProds,
     setOrderedProds,
     setIsWarningCartEmpty,
   } = useContext(GlobalContext);
@@ -87,11 +86,9 @@ function Order() {
     }
   };
 
-
-
   return (
     <div className="order-container">
-     <div className="order-left">
+      <div className="order-left">
         <div className="address">
           <h1>Giao tới</h1>
           <span className="name">
@@ -172,7 +169,9 @@ function Order() {
         <div className="order-cost">
           <div className="product">
             <p>Sản phẩm</p>
-            <span>{`${handlePrice(calculateOrderTotal() - deliveryFee)} đ`}</span>
+            <span>{`${handlePrice(
+              calculateOrderTotal() - deliveryFee
+            )} đ`}</span>
           </div>
           <div className="delivery">
             <p>Vận chuyển</p>
@@ -187,7 +186,7 @@ function Order() {
             <span>{`${handlePrice(calculateOrderTotal())} đ`}</span>
           </div>
         </div>
-     </div>
+      </div>
       <div onClick={confirmOrder} className="confirm-order">
         Xác nhận đặt hàng
       </div>

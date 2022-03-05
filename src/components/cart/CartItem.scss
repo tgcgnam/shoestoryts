@@ -14,9 +14,6 @@ input[type="number"] {
 }
 
 .cart-container {
-    // margin-top: 118px;
-    // margin-left: 228px;
-    // width: 80%;
     border-radius: 6px;
     margin: 30px;
     .cart-wrapper {
@@ -128,6 +125,8 @@ input[type="number"] {
 .customer-information {
     margin-top: 24px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 16px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -142,7 +141,7 @@ input[type="number"] {
         }
     }
     .address {
-        flex-basis: 50%;
+        // flex-basis: 50%;
     }
     h1 {
         i {
@@ -207,17 +206,13 @@ input[type="number"] {
 }
 
 .order-container {
-    // position: fixed;
-    top: 96px;
-    bottom: 16px;
-    right: 16px;
-    width: 314px;
+    // width: 314px;
     background-color: #fff;
     h1 {
         margin-bottom: 8px;
     }
     &>div {
-        margin: 22px 0 0;
+        // margin: 22px 0 0;
         border-radius: 6px;
         border: 1px solid #ccc;
         padding: 8px;
@@ -295,8 +290,7 @@ input[type="number"] {
         }
     }
     .confirm-order {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         background-color: tomato;
         border: none;
         color: #fff;
@@ -474,33 +468,24 @@ input[type="number"] {
         }
     }
     .order-container {
-        position: unset;
-        width: 66%;
-        margin-top: 120px;
-        margin-left: 228px;
         .confirm-order {
-            position: fixed;
-            z-index: 1;
-            bottom: 4px;
-            left: 228px;
-            width: 66%;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            width: 100%;
+            margin-top: 30px;
             &:hover {
                 opacity: 1;
             }
         }
         .order-cost {
-            position: fixed;
             z-index: 1;
             bottom: 38px;
             left: 228px;
-            width: 66%;
-            background-color: #b8e4f0;
             color: #222;
             border: none;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            p {
+                padding-right: 12px;
+            }
         }
     }
 }
@@ -561,11 +546,12 @@ input[type="number"] {
     .cart-item {
         flex-direction: column;
     }
-    .customer-information {
-        flex-direction: column;
-        align-items: center;
-        .methods {
-            margin-top: 24px;
+    .order-container {
+        width: 100%;
+        padding-top: 30px;
+        .order-left {
+            display: flex;
+            justify-content: space-between;
         }
     }
 }
@@ -583,14 +569,12 @@ input[type="number"] {
         margin: 0 16px 168px;
     }
     .order-container {
-        width: 96%;
-        margin: 100px 16px 0;
+        width: 100%;
         .order-cost {
-            width: 96%;
             left: 16px;
         }
         .confirm-order {
-            width: 96%;
+            width: 100%;
             left: 16px;
         }
     }
@@ -599,10 +583,17 @@ input[type="number"] {
 @media (max-width: 684px) {
     .customer-information {
         flex-direction: column;
-        align-items: center;
         margin: 16px 0;
         .methods {
             margin-top: 24px;
+        }
+        .address {
+            .address-wrapper {
+                input {
+                    max-width: 300px;
+                    width: 100%;
+                }
+            }
         }
     }
     .cart-container {
@@ -624,25 +615,9 @@ input[type="number"] {
     }
     .order-container {
         width: 100%;
-        margin: 100px 0 0;
-        &>div {
-            margin: 12px 16px 0;
-        }
-        .order-cost {
-            width: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            right: 0;
-            bottom: 38px;
-            margin: 0;
-        }
         .confirm-order {
-            width: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            right: 0;
-            bottom: 4px;
             margin: 0;
+            margin-top: 12px;
         }
     }
     .cart-container {
