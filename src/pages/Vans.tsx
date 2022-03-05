@@ -1,10 +1,9 @@
-import { useEffect, useContext,  } from "react";
+import { useEffect, useContext } from "react";
 import ProdItem from "../components/prodItem/ProdItem";
 import { GlobalContext } from "../utils/globalState";
-import { List,  } from "antd";
+import { List } from "antd";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-
 
 const ListItem = styled(List)`
   margin-top: 40px;
@@ -15,13 +14,12 @@ const ListItem = styled(List)`
 `;
 
 function VansPage() {
-  const { brandItems, setBrandItems } =
-    useContext(GlobalContext);
+  const { brandItems, setBrandItems } = useContext(GlobalContext);
 
   useEffect(() => {
     fetch("https://shoestory-server.herokuapp.com/products")
       .then((res) => res.json())
-      .then((brandItems) => setBrandItems(brandItems))
+      .then((brandItems) => setBrandItems(brandItems));
   }, []);
 
   // vansItem
@@ -32,9 +30,13 @@ function VansPage() {
   return (
     <div className="prods-container brand-container">
       <div className="brand-banner">
-        <img src="/images/vans_banner.jpg" alt="vans banner" />
+        <img
+          src="/images/vans_banner.jpg"
+          alt="vans banner"
+          style={{ width: "100%", marginTop: "60px" }}
+        />
       </div>
-      
+
       <ListItem
         grid={{
           gutter: 16,

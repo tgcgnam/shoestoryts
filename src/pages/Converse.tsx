@@ -16,13 +16,12 @@ const ListItem = styled(List)`
 `;
 
 function Vans() {
-  const { brandItems, setBrandItems} =
-    useContext(GlobalContext);
+  const { brandItems, setBrandItems } = useContext(GlobalContext);
 
   useEffect(() => {
     fetch("https://shoestory-server.herokuapp.com/products")
       .then((res) => res.json())
-      .then((brandItems) => setBrandItems(brandItems))
+      .then((brandItems) => setBrandItems(brandItems));
   }, []);
 
   const Converse = brandItems.filter(
@@ -32,7 +31,11 @@ function Vans() {
   return (
     <div className="prods-container brand-container">
       <div className="brand-banner">
-        <img src="/images/converse_banner.jpg" alt="converse banner" />
+        <img
+          src="/images/converse_banner.jpg"
+          alt="converse banner"
+          style={{ width: "100%", marginTop: "60px" }}
+        />
       </div>
       <ListItem
         grid={{
