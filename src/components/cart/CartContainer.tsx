@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../utils/globalState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard, faTimes, faTruck } from "@fortawesome/free-solid-svg-icons";
 import Inputcheck from "../inputcheck/Inputcheck";
 import CartWrapper from "./CartWrapper";
 import Order from "./Order";
@@ -174,7 +174,7 @@ function CartContainer() {
               handleChange={(e) => handleChange(e)}
               handleError={(e) => handleError(e)}
             />
-            {errors["số điện thoại"] && <p>{errors["số điện thoại"]}</p>}
+            {errors["phone"] && <p>{errors["phone"]}</p>}
             <Inputcheck
               handleChange={(e) => handleChange(e)}
               handleError={(e) => handleError(e)}
@@ -188,7 +188,7 @@ function CartContainer() {
               handleError={(e) => handleError(e)}
               type="text"
               name="quận, huyện"
-              title={"Tỉnh, thành phố"}
+              title={"Quận, huyện"}
             />
             {errors["quận, huyện"] && <p>{errors["quận, huyện"]}</p>}
             <Inputcheck
@@ -196,7 +196,7 @@ function CartContainer() {
               handleError={(e) => handleError(e)}
               type="text"
               name="xã, phường"
-              title={"Tỉnh, thành phố"}
+              title={"Xã, phường"}
             />
             {errors["xã, phường"] && <p>{errors["xã, phường"]}</p>}
             <Inputcheck
@@ -204,7 +204,7 @@ function CartContainer() {
               handleError={(e) => handleError(e)}
               type="text"
               name="địa chỉ"
-              title={"Tỉnh, thành phố"}
+              title={"Địa chỉ"}
             />
             {errors["địa chỉ"] && <p>{errors["địa chỉ"]}</p>}
           </div>
@@ -212,13 +212,14 @@ function CartContainer() {
         <div className="methods">
           <div className="delivery-method">
             <h1>
-              <i className="fas fa-truck" />
-              <span>Phương thức giao hàng</span>
+              <FontAwesomeIcon icon={faTruck} />
+              <span> Phương thức giao hàng</span>
             </h1>
             <div className="selections">
               <div className="item">
                 <div>
                   <input
+                    id="1"
                     onChange={(e) => {
                       handleRadio(e);
                     }}
@@ -226,13 +227,14 @@ function CartContainer() {
                     name="phương thức giao hàng"
                     type="radio"
                   />
-                  <span>Giao nhanh</span>
+                  <label htmlFor="1">Giao nhanh</label>
                 </div>
                 <div className="price">35.000 đ</div>
               </div>
               <div className="item">
                 <div>
                   <input
+                    id="2"
                     onChange={(e) => {
                       handleRadio(e);
                     }}
@@ -240,7 +242,7 @@ function CartContainer() {
                     name="phương thức giao hàng"
                     type="radio"
                   />
-                  <span>Giao tiêu chuẩn</span>
+                  <label htmlFor="2">Giao tiêu chuẩn</label>
                 </div>
                 <div className="price">0 đ</div>
               </div>
@@ -252,13 +254,14 @@ function CartContainer() {
 
           <div className="payment-method">
             <h1>
-              <i className="far fa-credit-card" />
-              <span>Phương thức thanh toán</span>
+              <FontAwesomeIcon icon={faCreditCard} />
+              <span> Phương thức thanh toán</span>
             </h1>
             <div className="selections">
               <div className="item">
                 <div>
                   <input
+                    id="3"
                     type="radio"
                     name="phương thức thanh toán"
                     value="Thanh toán khi nhận hàng"
@@ -266,12 +269,13 @@ function CartContainer() {
                       handleRadio(e);
                     }}
                   />
-                  <span>Thanh toán khi nhận hàng</span>
+                  <label htmlFor="3">Thanh toán khi nhận hàng</label>
                 </div>
               </div>
               <div className="item">
                 <div>
                   <input
+                    id="4"
                     type="radio"
                     name="phương thức thanh toán"
                     value="Thanh toán bằng ATM nội địa (Internet Banking)"
@@ -279,12 +283,15 @@ function CartContainer() {
                       handleRadio(e);
                     }}
                   />
-                  <span>Thanh toán bằng ATM nội địa (Internet Banking)</span>
+                  <label htmlFor="4">
+                    Thanh toán bằng ATM nội địa (Internet Banking)
+                  </label>
                 </div>
               </div>
               <div className="item">
                 <div>
                   <input
+                    id="5"
                     type="radio"
                     name="phương thức thanh toán"
                     value="Thanh toán bằng Credit/Debit Card (VISA, MASTER, JCB, AMEX)"
@@ -292,14 +299,15 @@ function CartContainer() {
                       handleRadio(e);
                     }}
                   />
-                  <span>
+                  <label htmlFor="5">
                     Thanh toán bằng Credit/Debit Card (VISA, MASTER, JCB, AMEX)
-                  </span>
+                  </label>
                 </div>
               </div>
               <div className="item">
                 <div>
                   <input
+                    id="6"
                     type="radio"
                     name="phương thức thanh toán"
                     value="Chuyển khoản ngân hàng"
@@ -307,7 +315,7 @@ function CartContainer() {
                       handleRadio(e);
                     }}
                   />
-                  <span>Chuyển khoản ngân hàng</span>
+                  <label htmlFor="6">Chuyển khoản ngân hàng</label>
                 </div>
               </div>
             </div>
