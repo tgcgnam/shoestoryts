@@ -33,7 +33,7 @@ const LiItem = styled(Menu.Item)`
   margin-bottom: 30px !important;
 
   :hover {
-    background-color: #f0f0f0 !important;
+    background-color: #f2b239 !important;
   }
   :hover:last-child {
     background-color: #fff !important;
@@ -50,10 +50,9 @@ const LiItem = styled(Menu.Item)`
 
   .ant-menu-title-content {
     a:hover {
-      color: #333 !important;
     }
     .active {
-      color: #333 !important;
+      color: #f2b239 !important;
     }
   }
   .quantity {
@@ -91,10 +90,7 @@ const LinkItem = styled(NavLink)`
 `;
 
 function Navigation() {
-  const {
-    cart,
-    isUpdatedFavorite,
-  }: any = useContext(GlobalContext);
+  const { cart, isUpdatedFavorite }: any = useContext(GlobalContext);
 
   return (
     <div className="navigation">

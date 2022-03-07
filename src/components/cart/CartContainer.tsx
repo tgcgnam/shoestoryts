@@ -2,10 +2,15 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../utils/globalState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCreditCard, faTimes, faTruck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCreditCard,
+  faTimes,
+  faTruck,
+} from "@fortawesome/free-solid-svg-icons";
 import Inputcheck from "../inputcheck/Inputcheck";
 import CartWrapper from "./CartWrapper";
 import Order from "./Order";
+import CartWarning from "./CartWarning";
 // import SelectCity from "./SelectCity";
 
 function CartContainer() {
@@ -377,35 +382,41 @@ function CartContainer() {
         </div>
       )}
       {isWarningInfo && (
-        <div className="add-fav" onClick={() => setIsWarningInfo(false)}>
-          <div className="add-fav-inner warn">
-            <h2>
-              Thông tin của quý khách chưa đầy đủ hoặc chưa đúng.
-              <br /> Vui lòng kiểm tra lại !
-            </h2>
-          </div>
-        </div>
+        <CartWarning
+          title={"Thông tin của quý khách chưa đầy đủ hoặc chưa đúng. !"}
+        />
+        // <div className="add-fav" onClick={() => setIsWarningInfo(false)}>
+        //   <div className="add-fav-inner warn">
+        //     <h2>
+        //       Thông tin của quý khách chưa đầy đủ hoặc chưa đúng.
+        //       <br /> Vui lòng kiểm tra lại !
+        //     </h2>
+        //   </div>
+        // </div>
       )}
       {isSizeWarning && (
-        <div className="add-fav" onClick={() => setIsSizeWarning(false)}>
-          <div className="add-fav-inner warn">
-            <h2>Vui lòng chọn size cho sản phẩm !</h2>
-          </div>
-        </div>
+        <CartWarning title={"Vui lòng chọn size cho sản phẩm !"} />
+        // <div className="add-fav" onClick={() => setIsSizeWarning(false)}>
+        //   <div className="add-fav-inner warn">
+        //     <h2>Vui lòng chọn size cho sản phẩm !</h2>
+        //   </div>
+        // </div>
       )}
       {isWarningCartEmpty && (
-        <div className="add-fav" onClick={() => setIsWarningCartEmpty(false)}>
-          <div className="add-fav-inner warn">
-            <h2>Giỏ hàng hiện không có sản phẩm nào !</h2>
-          </div>
-        </div>
+        <CartWarning title={"Giỏ hàng hiện không có sản phẩm nào !"} />
+        // <div className="add-fav" onClick={() => setIsWarningCartEmpty(false)}>
+        //   <div className="add-fav-inner warn">
+        //     <h2>Giỏ hàng hiện không có sản phẩm nào !</h2>
+        //   </div>
+        // </div>
       )}
       {isWarningConfirmInfo && (
-        <div className="add-fav" onClick={() => setIsWarningConfirmInfo(false)}>
-          <div className="add-fav-inner warn">
-            <h2>Vui lòng xác nhận thông tin của quý khách !</h2>
-          </div>
-        </div>
+        <CartWarning title={"Vui lòng xác nhận thông tin của quý khách !"} />
+        // <div className="add-fav" onClick={() => setIsWarningConfirmInfo(false)}>
+        //   <div className="add-fav-inner warn">
+        //     <h2>Vui lòng xác nhận thông tin của quý khách !</h2>
+        //   </div>
+        // </div>
       )}
     </div>
   );

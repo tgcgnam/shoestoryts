@@ -6,6 +6,7 @@ import "antd/dist/antd.css";
 import styled from "styled-components";
 
 import Search from "antd/lib/input/Search";
+import CartWarning from "../cart/CartWarning";
 
 const key: string = "updatable";
 
@@ -37,11 +38,11 @@ interface iQty {
 }
 
 function ProdItemContainer({ quantity }: iQty) {
-  const { products, setProducts, setIsLoader } = useContext(GlobalContext);
+  const { products, setProducts, setIsLoader, isCartWarning, isSoldOut } =
+    useContext(GlobalContext);
   const [seeMore, setSeeMore] = useState(false);
 
   useEffect(() => {
-    setIsLoader(true);
     fetch(`https://shoestory-server.herokuapp.com/products`)
       .then((res) => res.json())
       .then((products) => setProducts(products))
@@ -74,7 +75,7 @@ function ProdItemContainer({ quantity }: iQty) {
     <MainProd className="products-main">
       <Search
         placeholder="Tìm kiếm sản phẩm..."
-        style={{ width: 200, marginTop: "20px", marginBottom: "10px"}}
+        style={{ width: 200, marginTop: "20px", marginBottom: "10px" }}
         type="text"
         onChange={(e) => setKeyword(e.target.value)}
       />
@@ -109,10 +110,14 @@ function ProdItemContainer({ quantity }: iQty) {
       {!seeMore && (
         <Button className="btn-see" onClick={openMessage}>
           <p onClick={handleSeeMore} className="see-more">
-            Xem thêm...
+            Xem thêm
           </p>
         </Button>
       )}
+      {isCartWarning && (
+        <CartWarning title={"Sản phẩm đã có trong giỏ hàng !"} />
+      )}
+      {isSoldOut && <CartWarning title={"Sản phẩm tạm thời hết hàng !"} />}
     </MainProd>
   );
 }

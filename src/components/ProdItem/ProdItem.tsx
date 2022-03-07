@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Card, message } from "antd";
-import { ShoppingOutlined } from "@ant-design/icons";
+import { ShoppingOutlined,HeartFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
@@ -187,6 +187,9 @@ function ProdItem(props: {
       <div className="prod-item">
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
+        </div>
+        <div className="cart-fav-btn" >
+          <HeartFilled />
         </div>
         <Link to={`/detail/${props.id}`} style={{ textAlign: "center" }}>
           <img src={props.img} />
