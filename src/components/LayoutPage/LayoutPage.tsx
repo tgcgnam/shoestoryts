@@ -15,6 +15,7 @@ import "antd/dist/antd.css";
 import NaviRespon from "../naviRespon/NaviRespon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import Infomation from "../infomation/Infomation";
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {
     display: none;
@@ -59,6 +60,7 @@ function LayoutPage() {
               <Route path="/converse" element={<ConversePage />}></Route>
               <Route path="/vans" element={<VansPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="/info" element={<Infomation/>}></Route>
               <Route path="/favorite" element={<FavoritePage />}></Route>
               <Route path="/detail/:id" element={<DetailPage />}></Route>
             </Routes>

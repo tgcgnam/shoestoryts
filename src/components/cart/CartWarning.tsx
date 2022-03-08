@@ -11,6 +11,8 @@ function CartWarning({title}:any) {
     setIsSizeWarning,
     setIsWarningInfo,
     setIsWarningCartEmpty,
+    setIsAddFavSuccess,
+    setIsAddFavWarn,
   } = useContext(GlobalContext);
 
   const offWarning = () => {
@@ -20,6 +22,7 @@ function CartWarning({title}:any) {
     setIsSizeWarning(false);
     setIsWarningInfo(false);
     setIsWarningCartEmpty(false);
+    setIsAddFavSuccess(false);setIsAddFavWarn(false);
   };
 
   return (

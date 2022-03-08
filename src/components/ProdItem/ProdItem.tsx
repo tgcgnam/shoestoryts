@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Card, message } from "antd";
-import { ShoppingOutlined,HeartFilled } from "@ant-design/icons";
+import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
 
 import "antd/dist/antd.css";
+import CartWarning from "../cart/CartWarning";
 
 // styled
 const CardProd = styled(Card)`
@@ -136,8 +137,19 @@ function ProdItem(props: {
 }) {
   const { handlePrice } = globalFunction();
 
-  const { cart, setCart, setIsCartWarning, setIsSoldOut } =
-    useContext(GlobalContext);
+  const {
+    cart,
+    setCart,
+    setIsCartWarning,
+    setIsSoldOut,
+    favProducts,
+    setIsUpdatedFavorite,
+    setIsAddFavSuccess,
+    setIsAddFavWarn,
+    setFavProducts,
+    isAddFavSuccess,
+    isAddFavWarn,
+  } = useContext(GlobalContext);
 
   const addToCart = () => {
     let newData = [...cart];
@@ -182,13 +194,56 @@ function ProdItem(props: {
     }
   };
 
+  const addToFavorite = () => {
+    let check = true;
+    let newData = [...favProducts];
+
+    newData.map((item) => {
+      if (item.id === props.id) {
+        check = false;
+        setIsAddFavSuccess(false);
+        setIsAddFavWarn(true);
+        setIsUpdatedFavorite(false);
+
+        return item;
+      }
+      return item;
+    });
+
+    if (check) {
+      setIsAddFavSuccess(true);
+      setIsAddFavWarn(false);
+      setIsUpdatedFavorite(true);
+      newData.push({
+        id: props.id,
+        img: props.img,
+        name: props.name,
+        price: props.price,
+        sale: props.sale,
+        status: props.status,
+        condition: props.condition,
+        brand: props.brand,
+        sizes: props.sizes,
+        material: props.material,
+        color: props.color,
+      });
+    }
+
+    setFavProducts(newData);
+
+    let newCart = [...cart];
+    const newCartFilter = newCart.filter((item) => item.cartId !== props.id);
+
+    setCart(newCartFilter);
+  };
+
   return (
     <CardProd className="">
       <div className="prod-item">
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
         </div>
-        <div className="cart-fav-btn" >
+        <div className="cart-fav-btn" onClick={addToFavorite}>
           <HeartFilled />
         </div>
         <Link to={`/detail/${props.id}`} style={{ textAlign: "center" }}>
@@ -207,6 +262,12 @@ function ProdItem(props: {
           <span>{props.condition === "Tạm Hết hàng" && "Tạm Hết hàng"}</span>
         </div>
       </div>
+      {isAddFavSuccess && (
+        <CartWarning title={"Sản phẩm đã được thêm vào mục Yêu thích !"} />
+      )}
+      {isAddFavWarn && (
+        <CartWarning title={"Sản phẩm đã có trong mục Yêu thích !"} />
+      )}
     </CardProd>
   );
 }
