@@ -16,6 +16,10 @@ import NaviRespon from "../naviRespon/NaviRespon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Infomation from "../infomation/Infomation";
+import Loading from "../loading/Loading";
+import { useContext } from "react";
+import { GlobalContext } from "../../utils/globalState";
+
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {
     display: none;
@@ -43,6 +47,8 @@ const NavHeader = styled(Layout)`
 `;
 
 function LayoutPage() {
+    const { isLoader } = useContext(GlobalContext);
+
   return (
     <>
       <NavHeader style={{ background: "#fff" }}>
@@ -60,7 +66,7 @@ function LayoutPage() {
               <Route path="/converse" element={<ConversePage />}></Route>
               <Route path="/vans" element={<VansPage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
-              <Route path="/info" element={<Infomation/>}></Route>
+              <Route path="/info" element={<Infomation />}></Route>
               <Route path="/favorite" element={<FavoritePage />}></Route>
               <Route path="/detail/:id" element={<DetailPage />}></Route>
             </Routes>
@@ -73,6 +79,7 @@ function LayoutPage() {
           </SbackTop>
         </Footer>
       </NavHeader>
+      {isLoader && <Loading />}
     </>
   );
 }

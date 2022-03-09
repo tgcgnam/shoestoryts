@@ -1,27 +1,57 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState, useContext, SetStateAction } from "react";
+import styled from "styled-components";
+import { GlobalContext } from "../../utils/globalState";
 
-function SearchProd() {
-  const [prod, setProd] = useState<[]>([]);
+const InputStl = styled.div`
+  position: relative;
+  width: 500px;
+  margin: 10px auto;
+  input {
+    height: 60px;
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    border-radius: 0;
+    line-height: $input-line-height;
+    background-color: transparent;
+    color: #333;
+    font-size: $input-font-size;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #333333;
+    font-family: $font-family;
+
+    &:focus {
+      + .input-highlight {
+        border-top: 3px solid #fbc91b;
+      }
+    }
+  }
+`;
+
+function InputSearch() {
   const [keyword, setKeyword] = useState<string>(" ");
-  console.log(prod);
+  const { setProducts } = useContext(GlobalContext);
   useEffect(() => {
-    if (keyword != "") {
-      fetch(`https://shoestory-server.herokuapp.com/products/?q=` + keyword)
+    if (keyword != " ") {
+      fetch(
+        `https://shoestory-server.herokuapp.com/products/?q=` + keyword.trim()
+      )
         .then((res) => res.json())
-        .then((item) => setProd(item));
+        .then((item) => setProducts(item));
     }
   }, [keyword]);
+
   return (
-    <div className="container">
-      <div className="header">
+   <InputStl>
         <input
+          className="input"
+          placeholder="Tìm kiếm sản phẩm..."
           type="text"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value.trim())}
+          onChange={(e) => setKeyword(e.target.value)}
         />
-      </div>
-    </div>
+   </InputStl>
   );
 }
 
-export default SearchProd;
+export default InputSearch;

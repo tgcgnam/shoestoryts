@@ -38,6 +38,7 @@ function Infomation() {
     isOrderSuccess,
     isWarningCartEmpty,
     setIsWarningCartEmpty,
+    setIsLoader,
   } = useContext(GlobalContext);
 
   const remove = () => {
@@ -123,6 +124,7 @@ function Infomation() {
   };
 
   useEffect(() => {
+    setIsLoader(false)
     const errorsValue = Object.values(errors);
 
     const check = errorsValue.filter((item) => item).length;
@@ -377,17 +379,17 @@ function Infomation() {
       )}
       {isWarningInfo && (
         <CartWarning
-          title={"Thông tin của quý khách chưa đầy đủ hoặc chưa đúng. !"}
+          text={"Thông tin của quý khách chưa đầy đủ hoặc chưa đúng. !"}
         />
       )}
       {isSizeWarning && (
-        <CartWarning title={"Vui lòng chọn size cho sản phẩm !"} />
+        <CartWarning text={"Vui lòng chọn size cho sản phẩm !"} />
       )}
       {isWarningCartEmpty && (
-        <CartWarning title={"Giỏ hàng hiện không có sản phẩm nào !"} />
+        <CartWarning text={"Giỏ hàng hiện không có sản phẩm nào !"} />
       )}
       {isWarningConfirmInfo && (
-        <CartWarning title={"Vui lòng xác nhận thông tin của quý khách !"} />
+        <CartWarning text={"Vui lòng xác nhận thông tin của quý khách !"} />
       )}
     </div>
   );

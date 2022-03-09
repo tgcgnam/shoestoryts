@@ -1,10 +1,17 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import CartWrapper from "./CartWrapper";
 
-// import SelectCity from "./SelectCity";
+import { GlobalContext } from "../../utils/globalState";
+import { useContext, useEffect } from "react";
 
 function CartContainer() {
+  const { setIsLoader } = useContext(GlobalContext);
+
+  useEffect(() => {
+    setIsLoader(false);
+  }, []);
+
   return (
     <div className="cart-container">
       <CartWrapper />

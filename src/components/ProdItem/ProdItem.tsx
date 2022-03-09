@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { Card, message } from "antd";
+import { createContext, useContext } from "react";
+import { Card, message, notification } from "antd";
 import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
@@ -151,6 +151,11 @@ function ProdItem(props: {
     isAddFavWarn,
   } = useContext(GlobalContext);
 
+  //antd
+
+  const [api, contextHolder] = notification.useNotification();
+
+  //
   const addToCart = () => {
     let newData = [...cart];
     let check = true;
@@ -161,18 +166,17 @@ function ProdItem(props: {
       newData.map((item) => {
         if (item.cartId === props.id) {
           check = false;
-          setIsCartWarning(true);
+          api.info({
+            message: `Sản phẩm đã có trong giỏ hàng !`,
+          });
           return item;
         }
         return item;
       });
 
       if (check) {
-        message.success({
-          content: "Đã thêm vào giỏ hàng",
-          style: {
-            marginTop: "100px",
-          },
+        api.info({
+          message: `Đã thêm vào giỏ hàng !`,
         });
         newData.push({
           cartId: props.id,
@@ -203,6 +207,9 @@ function ProdItem(props: {
         check = false;
         setIsAddFavSuccess(false);
         setIsAddFavWarn(true);
+        api.info({
+          message: `Sản phẩm đã có trong yêu thích!`,
+        });
         setIsUpdatedFavorite(false);
 
         return item;
@@ -211,6 +218,9 @@ function ProdItem(props: {
     });
 
     if (check) {
+      api.info({
+        message: `Đã thêm vào yêu thích!`,
+      });
       setIsAddFavSuccess(true);
       setIsAddFavWarn(false);
       setIsUpdatedFavorite(true);
@@ -230,16 +240,12 @@ function ProdItem(props: {
     }
 
     setFavProducts(newData);
-
-    let newCart = [...cart];
-    const newCartFilter = newCart.filter((item) => item.cartId !== props.id);
-
-    setCart(newCartFilter);
   };
 
   return (
     <CardProd className="">
       <div className="prod-item">
+        {contextHolder}
         <div className="cart-plus-btn" onClick={addToCart}>
           <ShoppingOutlined />
         </div>
@@ -262,12 +268,6 @@ function ProdItem(props: {
           <span>{props.condition === "Tạm Hết hàng" && "Tạm Hết hàng"}</span>
         </div>
       </div>
-      {isAddFavSuccess && (
-        <CartWarning title={"Sản phẩm đã được thêm vào mục Yêu thích !"} />
-      )}
-      {isAddFavWarn && (
-        <CartWarning title={"Sản phẩm đã có trong mục Yêu thích !"} />
-      )}
     </CardProd>
   );
 }

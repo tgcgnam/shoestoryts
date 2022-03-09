@@ -29,8 +29,8 @@ const NavLayout = styled(Layout)`
 `;
 
 const LiItem = styled(Menu.Item)`
-  padding: 30px !important;
-  margin-bottom: 30px !important;
+  padding: 42px !important;
+  margin: 0px !important;
 
   :hover {
     background-color: #f2b239 !important;
@@ -57,7 +57,7 @@ const LiItem = styled(Menu.Item)`
   }
   .quantity {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 72px;
     display: flex;
     justify-content: center;

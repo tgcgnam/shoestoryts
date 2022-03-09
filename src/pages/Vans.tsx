@@ -14,12 +14,14 @@ const ListItem = styled(List)`
 `;
 
 function VansPage() {
-  const { brandItems, setBrandItems } = useContext(GlobalContext);
+  const { brandItems, setBrandItems, setIsLoader } = useContext(GlobalContext);
 
   useEffect(() => {
+    setIsLoader(true);
     fetch("https://shoestory-server.herokuapp.com/products")
       .then((res) => res.json())
-      .then((brandItems) => setBrandItems(brandItems));
+      .then((brandItems) => setBrandItems(brandItems))
+      .then(() => setIsLoader(false));
   }, []);
 
   // vansItem

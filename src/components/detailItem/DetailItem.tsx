@@ -6,6 +6,9 @@ import CartWarning from "../cart/CartWarning";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import styled from "styled-components";
 import ImagesGallery from "./ImgWrapper";
+import { Card, message, notification } from "antd";
+import { Link } from "react-router-dom";
+import ButtonAnt from "../button/Button";
 
 function DetailItem({ prodId }: any) {
   const [product, setProduct]: any = useState({
@@ -29,14 +32,16 @@ function DetailItem({ prodId }: any) {
     setIsAddCartSuccess,
     isSoldOut,
     setIsSoldOut,
+    setIsLoader,
   } = useContext(GlobalContext);
 
   useEffect(() => {
+    setIsLoader(true);
     fetch(`https://tstoreserver.herokuapp.com/products/${prodId}`)
       .then((res) => res.json())
-      .then((product) => setProduct(product));
+      .then((product) => (setProduct(product), setIsLoader(false)));
 
-    setImgLink(product.image1);
+    // setImgLink(product.image1);
     fetch(`https://tstoreserver.herokuapp.com/description/${prodId}`)
       .then((res) => res.json())
       .then((desc) => setDesc(desc));
@@ -51,6 +56,8 @@ function DetailItem({ prodId }: any) {
     setQuantity((prev: number) => (prev > 1 ? prev - 1 : 1));
   };
 
+  const [api, contextHolder] = notification.useNotification();
+
   const addToCart = () => {
     let newData = [...cart];
     let check = true;
@@ -61,14 +68,18 @@ function DetailItem({ prodId }: any) {
       newData.map((item) => {
         if (item.cartId === product.id) {
           check = false;
-          setIsCartWarning(true);
+          api.info({
+            message: `Sản phẩm đã có trong giỏ hàng !`,
+          });
           return item;
         }
         return item;
       });
 
       if (check) {
-        setIsAddCartSuccess(true);
+        api.info({
+          message: `Đã thêm vào giỏ hàng !`,
+        });
         newData.push({
           cartId: product.id,
           cartImg: product.image1,
@@ -115,30 +126,21 @@ function DetailItem({ prodId }: any) {
                 <div onClick={increase}>+</div>
               </div>
             </div>
-            <div onClick={addToCart} className="order-btn">
+            {contextHolder}
+            {/* <div onClick={addToCart} className="order-btn">
               Thêm vào giỏ hàng
-            </div>
+            </div> */}
+            <ButtonAnt onclick={addToCart} text={"Thêm vào giỏ hàng"} />
+
+            <Link className="order-btn" to={"/cart"} onClick={addToCart}>
+              Mua ngay
+            </Link>
+
             <div className="description">
               <p>{desc.content}</p>
             </div>
           </div>
         </div>
-        {isAddCartSuccess && (
-          <div className="add-fav" onClick={() => setIsAddCartSuccess(false)}>
-            <div className="add-fav-inner">
-              <h2>Sản phẩm đã được thêm vào giỏ hàng !</h2>
-            </div>
-          </div>
-        )}
-        {isCartWarning && <CartWarning />}
-        {/* {displayActualPhoto && <ActualPhoto overlayPhoto={overlayPhoto} />} */}
-        {isSoldOut && (
-          <div className="add-fav" onClick={() => setIsSoldOut(false)}>
-            <div className="add-fav-inner warn">
-              <h2>Sản phẩm tạm thời hết hàng !</h2>
-            </div>
-          </div>
-        )}
       </DetailWrapper>
     </div>
   );

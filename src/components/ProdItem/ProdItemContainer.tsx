@@ -1,21 +1,18 @@
-import { Button, Col, List, message, Row } from "antd";
-import { useEffect, useContext, useState } from "react";
+import { Button, Col, List, message, notification, Row, Space } from "antd";
+import { useEffect, useContext, useState, createContext } from "react";
 import { GlobalContext } from "../../utils/globalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-
 import Search from "antd/lib/input/Search";
 import CartWarning from "../cart/CartWarning";
+import Loading from "../loading/Loading";
+import Context from "@ant-design/icons/lib/components/Context";
+import RadiusUprightOutlined from "@ant-design/icons/lib/icons/RadiusUprightOutlined";
+import ButtonAnt from "../button/Button";
+import InputSearch from "../filter/Search";
 
 const key: string = "updatable";
-
-function openMessage(): void {
-  message.loading({ content: "Bạn đợi một tí nhé ^^", key });
-  setTimeout(() => {
-    message.success({ content: "Xong rồi nè!", key, duration: 2 });
-  }, 1500);
-}
 
 const ListItem = styled(List)`
   .ant-row {
@@ -33,24 +30,70 @@ const MainProd = styled.div`
   }
 `;
 
+const InputSH = styled.div`
+  /* position: relative; */
+  width: 500px;
+  margin: 50px auto;
+  .input {
+    height: 60px;
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    border-radius: 0;
+    line-height: 70px;
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #333333;
+    font-family: $font-family;
+
+    &:focus {
+      + .input-highlight {
+        border-top: 3px solid #fbc91b;
+      }
+    }
+  }
+`;
+
 interface iQty {
   quantity: number;
 }
 
 function ProdItemContainer({ quantity }: iQty) {
-  const { products, setProducts, setIsLoader, isCartWarning, isSoldOut } =
-    useContext(GlobalContext);
+  const {
+    products,
+    setProducts,
+    setIsLoader,
+    isCartWarning,
+    isSoldOut,
+    isLoader,
+  } = useContext(GlobalContext);
   const [seeMore, setSeeMore] = useState(false);
 
   useEffect(() => {
+    setIsLoader(true);
     fetch(`https://shoestory-server.herokuapp.com/products`)
       .then((res) => res.json())
       .then((products) => setProducts(products))
       .then(() => setIsLoader(false));
   }, []);
 
+  const key = "updatable";
+
   function handleSeeMore(): void {
+    notification.open({
+      key,
+      message: "Thông báo",
+      description: "Đang tải sản phẩm !",
+    });
     setTimeout(() => {
+      notification.open({
+        key,
+        message: "Thông báo",
+        description: "Đã tải xong !",
+      });
       setSeeMore(true);
     }, 1000);
   }
@@ -59,26 +102,11 @@ function ProdItemContainer({ quantity }: iQty) {
     (item: { id: number }) => item.id - 1 < (seeMore ? 24 : quantity)
   );
 
-  const [keyword, setKeyword] = useState<string>(" ");
-
-  useEffect(() => {
-    if (keyword != " ") {
-      fetch(
-        `https://shoestory-server.herokuapp.com/products/?q=` + keyword.trim()
-      )
-        .then((res) => res.json())
-        .then((item) => setProducts(item));
-    }
-  }, [keyword]);
   //
   return (
     <MainProd className="products-main">
-      <Search
-        placeholder="Tìm kiếm sản phẩm..."
-        style={{ width: 200, marginTop: "20px", marginBottom: "10px" }}
-        type="text"
-        onChange={(e) => setKeyword(e.target.value)}
-      />
+      <InputSearch />
+
       <ListItem
         grid={{
           gutter: 16,
@@ -107,12 +135,9 @@ function ProdItemContainer({ quantity }: iQty) {
           ></ProdItem>
         )}
       />
+
       {!seeMore && (
-        <Button className="btn-see" onClick={openMessage}>
-          <p onClick={handleSeeMore} className="see-more">
-            Xem thêm
-          </p>
-        </Button>
+        <ButtonAnt text={"Xem thêm"} onclick={handleSeeMore}></ButtonAnt>
       )}
       {isCartWarning && (
         <CartWarning title={"Sản phẩm đã có trong giỏ hàng !"} />

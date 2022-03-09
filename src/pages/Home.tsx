@@ -2,7 +2,7 @@ import Banner from "../components/banner/Banner";
 import ProdItemContainer from "../components/prodItem/ProdItemContainer";
 
 function HomePage() {
-  const onSearch = (value: any) => console.log(value);
+
 
   return (
     <>

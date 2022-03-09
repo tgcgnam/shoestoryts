@@ -26,12 +26,14 @@ function CartWarning({title}:any) {
   };
 
   return (
-    <div className="cart-warning" onClick={offWarning}>
-      <div className="cart-warning-inner">
-        <FontAwesomeIcon icon={faTimes} className="close-btn"></FontAwesomeIcon>
-        <h2>{title}</h2>
-      </div>
-    </div>
+   <div>
+      {/* <div className="" onClick={offWarning}>
+  
+          <FontAwesomeIcon icon={faTimes} className="close-btn"></FontAwesomeIcon>
+  
+  
+      </div> */}
+   </div>
   );
 }
 

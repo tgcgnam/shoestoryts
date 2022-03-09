@@ -17,6 +17,7 @@ function CartPage() {
     setIsOrderSuccess(false);
     setLetSubmit(false);
     window.scroll(0, 0);
+    
   }, []);
   return (
     <div>

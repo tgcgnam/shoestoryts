@@ -17,7 +17,7 @@ const ImagesGallery = ({ id }: { id: number }) => {
     return () => controller.abort();
   }, []);
 
-  const imagesEntries = Object.values<any>(images)?.map((img: any) => {
+  const imagesEntries = Object.values<any>(images)?.map((img: string) => {
     return {
       original: img,
       thumbnail: img,
