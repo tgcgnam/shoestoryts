@@ -5,7 +5,9 @@ import { GlobalContext } from "../../utils/globalState";
 const InputStl = styled.div`
   position: relative;
   width: 500px;
+  max-width: 100%;
   margin: 10px auto;
+  padding: 0 20px;
   input {
     height: 60px;
     width: 100%;
