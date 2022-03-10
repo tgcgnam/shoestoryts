@@ -135,11 +135,9 @@ function CartItem(props: any) {
 
     setCart(newData);
   };
-  const [api, contextHolder] = notification.useNotification();
 
   return (
     <>
-      {contextHolder}
       <div className="cart-item">
         <div className="wrapper">
           <img src={props.img} className="cart-img" alt="cart-item" />

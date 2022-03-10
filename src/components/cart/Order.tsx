@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { useContext } from "react";
 
 import globalFunction from "../../utils/globalFunction";
@@ -14,7 +15,7 @@ function Order() {
     setIsWarningConfirmInfo,
     setIsSizeWarning,
     cartSizeWarnings,
-    setCartSizeWarnings,
+setIsLoader,
     setIsOrderSuccess,
     setCart,
     setOrderedProds,
@@ -42,6 +43,10 @@ function Order() {
     return result + deliveryFee;
   };
 
+setIsLoader(false)
+
+  const [api, contextHolder] = notification.useNotification();
+
   const confirmOrder = () => {
     let check = false;
     let newData = { ...cartSizeWarnings };
@@ -61,14 +66,25 @@ function Order() {
       }
     });
 
-    setCartSizeWarnings(newData);
+    // api.info({
+    //   message: `order error`,
+    //   // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+    // });
 
     if (check) {
-      setIsSizeWarning(true);
+      api.info({
+        message: ` error`,
+        // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+      });
+      // setIsSizeWarning(true);
+      // console.log("hello");
     } else {
       if (cart.length !== 0) {
         if (letSubmit) {
-          setIsOrderSuccess(true);
+          api.info({
+            message: `order susscess`,
+            // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+          });
 
           setOrderedProds(cart);
 
@@ -88,6 +104,7 @@ function Order() {
 
   return (
     <div className="order-container">
+      {contextHolder}
       <div className="order-left">
         <div className="address">
           <h1>Giao tới</h1>

@@ -6,6 +6,7 @@ import { List } from "antd";
 
 import "antd/dist/antd.css";
 import styled from "styled-components";
+import InputSearch from "../components/filter/Search";
 
 const ListItem = styled(List)`
   margin-top: 40px;
@@ -39,6 +40,7 @@ function Vans() {
           style={{ width: "100%", marginTop: "60px" }}
         />
       </div>
+      <InputSearch/>
       <ListItem
         grid={{
           gutter: 16,

@@ -31,9 +31,10 @@ const NavLayout = styled(Layout)`
 const LiItem = styled(Menu.Item)`
   padding: 42px !important;
   margin: 0px !important;
-
+border-radius: 5px;
   :hover {
     background-color: #ec2b2183 !important;
+    border-radius: 5px;
   }
   :hover:last-child {
     background-color: #fff !important;

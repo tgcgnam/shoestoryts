@@ -1,9 +1,10 @@
-import { List } from "antd";
+import { List, Result } from "antd";
 import { useContext } from "react";
 import { GlobalContext } from "../../utils/globalState";
-import CartWarning from "../cart/CartWarning";
 import styled from "styled-components";
 import CartFav from "./CardFav";
+import { Link } from "react-router-dom";
+import { SubtitleAnt } from "../cart/CartWrapper";
 
 const ListFlex = styled.div`
   .ant-row {
@@ -15,17 +16,27 @@ const ListFlex = styled.div`
 `;
 
 function FavoriteProd() {
-  const { favProducts, isCartWarning } = useContext(GlobalContext);
+  const { favProducts, setIsLoader } = useContext(GlobalContext);
+  setIsLoader(false);
   return (
     <div
       className="favorite-container"
       style={{ padding: "30px", marginTop: "0px" }}
     >
-      <h5>Sản phẩm yêu thích</h5>
       <ListFlex className="Lists-fav">
         {favProducts.length === 0 ? (
-          <div className="empty">
-            <h1>Bạn không có sản phẩm yêu thích nào !</h1>
+          <div className="empty-cart">
+            <Result
+              status="404"
+              subTitle={
+                <SubtitleAnt>Không có sản phẩm trong yêu thích!</SubtitleAnt>
+              }
+              extra={
+                <Link type="primary" to={"/"}>
+                  Trang chủ
+                </Link>
+              }
+            />
           </div>
         ) : (
           <List
@@ -49,7 +60,6 @@ function FavoriteProd() {
           />
         )}
       </ListFlex>
-      {isCartWarning && <CartWarning  />}
     </div>
   );
 }

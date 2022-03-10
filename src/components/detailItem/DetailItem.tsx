@@ -8,6 +8,7 @@ import { Card, message, notification } from "antd";
 import { Link } from "react-router-dom";
 import ButtonAnt from "../button/Button";
 import ChosenSize from "../../utils/ChosenSize";
+import { CheckCircleTwoTone } from "@ant-design/icons";
 
 function DetailItem({ prodId }: any) {
   const [product, setProduct]: any = useState({
@@ -56,6 +57,7 @@ function DetailItem({ prodId }: any) {
       if (check) {
         api.info({
           message: `Đã thêm vào giỏ hàng !`,
+          icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
         });
         newData.push({
           cartId: product.id,

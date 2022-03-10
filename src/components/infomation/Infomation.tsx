@@ -1,5 +1,7 @@
 import {
   faCreditCard,
+  faLocationDot,
+  faLocationPin,
   faTimes,
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
@@ -38,18 +40,18 @@ function Infomation() {
     setIsLoader,
   } = useContext(GlobalContext);
 
-  const remove = () => {
-    let newData = [...cart];
+  // const remove = () => {
+  //   let newData = [...cart];
 
-    const filterData = newData.filter((item) => item.cartId !== productId);
+  //   const filterData = newData.filter((item) => item.cartId !== productId);
 
-    setCart(filterData);
-    setIsRemoveWarning(false);
-  };
+  //   setCart(filterData);
+  //   setIsRemoveWarning(false);
+  // };
 
-  const undo = () => {
-    setIsRemoveWarning(false);
-  };
+  // const undo = () => {
+  //   setIsRemoveWarning(false);
+  // };
 
   const handleChange = (e: any) => {
     setLetSubmit(false);
@@ -85,7 +87,6 @@ function Infomation() {
           });
         }
       }
-
       if (name === "phone") {
         if (
           !/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/.test(
@@ -103,7 +104,6 @@ function Infomation() {
           });
         }
       }
-
       if (name !== "email" && name !== "phone") {
         setErrors({
           ...errors,
@@ -121,7 +121,6 @@ function Infomation() {
   };
 
   useEffect(() => {
-    setIsLoader(false);
     const errorsValue = Object.values(errors);
 
     const check = errorsValue.filter((item) => item).length;
@@ -145,11 +144,13 @@ function Infomation() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h5 style={{ marginTop: "40px" }}>Thông tin giao hàng</h5>
       <div className="customer-information">
         <div className="address">
           <div className="address-wrapper">
-            <h1>Địa chỉ</h1>
+            <h1>
+              <FontAwesomeIcon icon={faLocationDot} />
+              <span style={{ fontSize: "16px" }}> Địa chỉ</span>
+            </h1>
             <Inputcheck
               title={"Họ và tên: "}
               name={"tên"}
@@ -212,7 +213,7 @@ function Infomation() {
           <div className="delivery-method">
             <h1>
               <FontAwesomeIcon icon={faTruck} />
-              <span> Phương thức giao hàng</span>
+              <span style={{ fontSize: "16px" }}> Phương thức giao hàng</span>
             </h1>
             <div className="selections">
               <div className="item">
@@ -254,7 +255,7 @@ function Infomation() {
           <div className="payment-method">
             <h1>
               <FontAwesomeIcon icon={faCreditCard} />
-              <span> Phương thức thanh toán</span>
+              <span style={{ fontSize: "16px" }}> Phương thức thanh toán</span>
             </h1>
             <div className="selections">
               <div className="item">
@@ -326,64 +327,12 @@ function Infomation() {
             Xác nhận thông tin
           </div>
         </div>
-
         <Order />
       </div>
-      {isRemoveWarning && (
-        <div className="remove-warning">
-          <div className="remove-warning-inner">
-            <span className="close-btn" onClick={undo}>
-              <FontAwesomeIcon icon={faTimes} />
-            </span>
-
-            <h2>Bạn có chắc chắn muốn xóa sản phẩm ?</h2>
-            <div className="response">
-              <div className="choice yes" onClick={remove}>
-                Có
-              </div>
-              <div className="choice no" onClick={undo}>
-                Không
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {isAddFavSuccess && (
-        <div className="add-fav" onClick={() => setIsAddFavSuccess(false)}>
-          <div className="add-fav-inner">
-            <h2>Sản phẩm đã được thêm vào mục Yêu thích !</h2>
-          </div>
-        </div>
-      )}
-      {isOrderSuccess && (
-        <div className="add-fav">
-          <div className="add-fav-inner">
-            <img src="/images/success.png" alt="" />
-            <h2>Quý khách đã đặt hàng thành công!</h2>
-            <h4>Chúng tôi sẽ liên hệ và giao hàng trong thời gian sớm nhất!</h4>
-            <Link to="/" className="back-home-btn">
-              Tiếp tục mua sắm
-            </Link>
-          </div>
-        </div>
-      )}
-      {isAddFavWarn && (
-        <div className="add-fav" onClick={() => setIsAddFavWarn(false)}>
-          <div className="add-fav-inner warn">
-            <h2>Sản phẩm đã có trong mục Yêu thích !</h2>
-          </div>
-        </div>
-      )}
       {isWarningInfo && (
         <CartWarning
           text={"Thông tin của quý khách chưa đầy đủ hoặc chưa đúng. !"}
         />
-      )}
-      {isSizeWarning && (
-        <CartWarning text={"Vui lòng chọn size cho sản phẩm !"} />
-      )}
-      {isWarningCartEmpty && (
-        <CartWarning text={"Giỏ hàng hiện không có sản phẩm nào !"} />
       )}
       {isWarningConfirmInfo && (
         <CartWarning text={"Vui lòng xác nhận thông tin của quý khách !"} />
