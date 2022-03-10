@@ -284,4 +284,6 @@ function FooterPage() {
   );
 }
 
+
+<></>
 export default FooterPage;

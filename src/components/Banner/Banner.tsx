@@ -11,7 +11,6 @@ margin: 56px 8px 0 8px;
     right: 16px;
     height: 300px;
     border-radius: 10px;
-
     .item1 {
       border-radius: 10px;
       img {

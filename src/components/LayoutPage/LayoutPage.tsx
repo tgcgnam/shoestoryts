@@ -19,7 +19,7 @@ import Infomation from "../infomation/Infomation";
 import Loading from "../loading/Loading";
 import { useContext } from "react";
 import { GlobalContext } from "../../utils/globalState";
-
+const abc = styled.div``;
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {
     display: none;
@@ -47,7 +47,7 @@ const NavHeader = styled(Layout)`
 `;
 
 function LayoutPage() {
-    const { isLoader } = useContext(GlobalContext);
+  const { isLoader } = useContext(GlobalContext);
 
   return (
     <>

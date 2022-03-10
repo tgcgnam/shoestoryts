@@ -4,7 +4,7 @@ import { PageHeader } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 
-//styled
+
 const Header = styled(PageHeader)`
   position: fixed;
   top: 0;

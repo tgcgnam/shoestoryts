@@ -9,7 +9,7 @@ import { GlobalContext } from "../../utils/globalState";
 import "antd/dist/antd.css";
 import CartWarning from "../cart/CartWarning";
 
-// styled
+
 const CardProd = styled(Card)`
   border: none;
   .cart-fav-btn {

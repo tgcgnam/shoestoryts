@@ -128,10 +128,6 @@ function ProdItemContainer({ quantity }: iQty) {
       {!seeMore && (
         <ButtonAnt text={"Xem thêm"} onclick={handleSeeMore}></ButtonAnt>
       )}
-      {/* {isCartWarning && (
-        <CartWarning title={"Sản phẩm đã có trong giỏ hàng !"} />
-      )}
-      {isSoldOut && <CartWarning title={"Sản phẩm tạm thời hết hàng !"} />} */}
     </MainProd>
   );
 }
