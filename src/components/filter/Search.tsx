@@ -45,14 +45,14 @@ function InputSearch() {
   }, [keyword]);
 
   return (
-   <InputStl>
-        <input
-          className="input"
-          placeholder="Tìm kiếm sản phẩm..."
-          type="text"
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-   </InputStl>
+    <InputStl>
+      <input
+        className="input"
+        placeholder="Tìm kiếm sản phẩm..."
+        type="text"
+        onChange={(e) => setKeyword(e.target.value)}
+      />
+    </InputStl>
   );
 }
 

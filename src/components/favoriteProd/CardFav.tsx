@@ -41,7 +41,7 @@ function CartFav(props: any) {
 
   const deleteFavProd = () => {
     let newData = [...favProducts];
-
+    console.log(newData);
     const filterFavProducts = newData.filter((item) => item.id !== props.id);
 
     setFavProducts(filterFavProducts);

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { createContext, useContext } from "react";
 import { Card, message, notification } from "antd";
-import { ShoppingOutlined, HeartFilled } from "@ant-design/icons";
+import { ShoppingOutlined, HeartFilled, CheckCircleTwoTone, HeartTwoTone } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
@@ -162,6 +162,7 @@ function ProdItem(props: {
       setIsSoldOut(true);
       api.info({
         message: `Sản phẩm tạm hết hàng !`,
+
       });
     } else {
       newData.map((item) => {
@@ -176,8 +177,9 @@ function ProdItem(props: {
       });
 
       if (check) {
-        api.info({
+        api.success({
           message: `Đã thêm vào giỏ hàng !`,
+          icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
         });
         newData.push({
           cartId: props.id,
@@ -202,13 +204,14 @@ function ProdItem(props: {
   const addToFavorite = () => {
     let check = true;
     let newData = [...favProducts];
-
+  
     newData.map((item) => {
       if (item.id === props.id) {
         check = false;
         setIsAddFavSuccess(false);
         setIsAddFavWarn(true);
         api.info({
+          type:'success',
           message: `Sản phẩm đã có trong yêu thích!`,
         });
         setIsUpdatedFavorite(false);
@@ -219,8 +222,9 @@ function ProdItem(props: {
     });
 
     if (check) {
-      api.info({
+      api.success({
         message: `Đã thêm vào yêu thích!`,
+        icon : <HeartTwoTone twoToneColor="#eb2f96" />,
       });
       setIsAddFavSuccess(true);
       setIsAddFavWarn(false);

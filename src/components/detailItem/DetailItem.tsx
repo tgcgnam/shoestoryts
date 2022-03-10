@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from "../../utils/globalState";
 import globalFunction from "../../utils/globalFunction";
-// import ActualPhoto from "../actualPhoto/ActualPhoto";
-import CartWarning from "../cart/CartWarning";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import styled from "styled-components";
 import ImagesGallery from "./ImgWrapper";
@@ -14,12 +12,8 @@ import ChosenSize from "../../utils/ChosenSize";
 function DetailItem({ prodId }: any) {
   const [product, setProduct]: any = useState({
     sizes: [],
-    image1: "",
-    image2: "",
-    image3: "",
-    image4: "",
   });
-  // console.log(setProduct)
+
   const [desc, setDesc]: any = useState({});
   const { quantity, cart, setCart, setIsSoldOut, setIsLoader } =
     useContext(GlobalContext);
@@ -36,22 +30,17 @@ function DetailItem({ prodId }: any) {
   }, []);
   const { handlePrice } = globalFunction();
 
-  // const increase = () => {
-  //   setQuantity((prev: number) => prev + 1);
-  // };
-
-  // const decrease = () => {
-  //   setQuantity((prev: number) => (prev > 1 ? prev - 1 : 1));
-  // };
-
   const [api, contextHolder] = notification.useNotification();
 
   const addToCart = () => {
     let newData = [...cart];
     let check = true;
-    console.log(newData);
+
     if (product.condition === "Hết hàng") {
       setIsSoldOut(true);
+      api.info({
+        message: `Sản phẩm tạm hết hàng !`,
+      });
     } else {
       newData.map((item) => {
         if (item.cartId === product.id) {
@@ -86,8 +75,12 @@ function DetailItem({ prodId }: any) {
 
       setCart(newData);
     }
+    if (product.sizes !== product.sizes) {
+      api.info({
+        message: `Sản phẩm đã có trong yêu thích!`,
+      });
+    }
   };
-  console.log(product);
 
   return (
     <div className="detail-item-container">
@@ -106,15 +99,14 @@ function DetailItem({ prodId }: any) {
             </div>
             <div>Trạng thái: {product.condition}</div>
             <br />
-
-           Chọn size: <ChosenSize sizes={product.sizes} />
+            Chọn size: <ChosenSize id={product.id} sizes={product.sizes} />
+            <br />
             <br />
             {contextHolder}
             <BuyNow className="order-btn" to={"/cart"} onClick={addToCart}>
               Mua ngay
             </BuyNow>
             <ButtonAnt onclick={addToCart} text={"Thêm vào giỏ hàng"} />
-
             <div className="description">
               <h5>Mô tả sản phẩm</h5>
               <p>{desc.content}</p>
@@ -127,6 +119,7 @@ function DetailItem({ prodId }: any) {
 }
 
 export default DetailItem;
+
 const BuyNow = styled(Link)`
   padding: 11px 25px !important;
   background-color: #ec2a21 !important;
@@ -196,7 +189,7 @@ const DetailWrapper = styled.div`
         .old-price {
           font-size: 1.8rem;
           text-decoration: line-through;
-          color:#333 ;
+          color: #333;
         }
       }
       .quantity {

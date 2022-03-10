@@ -1,4 +1,6 @@
+import { Result, Button } from "antd";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { GlobalContext } from "../../utils/globalState";
 import CartItem from "./CartItem";
 
@@ -11,7 +13,12 @@ function CartWrapper() {
           <h5>Giỏ hàng của bạn</h5>
           {cart.length === 0 ? (
             <div className="empty-cart">
-              <h2>Giỏ hàng của bạn đang trống !</h2>
+              <Result
+                status="404"
+
+                subTitle="Không có gì trong giỏ hàng !"
+                extra={<Link type="primary" to={"/"}>Trang chủ</Link>}
+              />
             </div>
           ) : (
             cart.map(

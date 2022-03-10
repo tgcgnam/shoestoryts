@@ -44,16 +44,12 @@ function FavoriteProd() {
                 sizes={props.sizes}
                 material={props.material}
                 color={props.color}
-                displayTrash={undefined}
-                image2={""}
-                image3={""}
-                image4={""}
               ></CartFav>
             )}
           />
         )}
       </ListFlex>
-      {isCartWarning && <CartWarning />}
+      {isCartWarning && <CartWarning  />}
     </div>
   );
 }

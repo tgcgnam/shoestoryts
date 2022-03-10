@@ -58,14 +58,7 @@ interface iQty {
 }
 
 function ProdItemContainer({ quantity }: iQty) {
-  const {
-    products,
-    setProducts,
-    setIsLoader,
-    isCartWarning,
-    isSoldOut,
-    isLoader,
-  } = useContext(GlobalContext);
+  const { products, setProducts, setIsLoader } = useContext(GlobalContext);
   const [seeMore, setSeeMore] = useState(false);
 
   useEffect(() => {
@@ -135,10 +128,10 @@ function ProdItemContainer({ quantity }: iQty) {
       {!seeMore && (
         <ButtonAnt text={"Xem thêm"} onclick={handleSeeMore}></ButtonAnt>
       )}
-      {isCartWarning && (
+      {/* {isCartWarning && (
         <CartWarning title={"Sản phẩm đã có trong giỏ hàng !"} />
       )}
-      {isSoldOut && <CartWarning title={"Sản phẩm tạm thời hết hàng !"} />}
+      {isSoldOut && <CartWarning title={"Sản phẩm tạm thời hết hàng !"} />} */}
     </MainProd>
   );
 }

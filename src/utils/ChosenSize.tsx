@@ -17,6 +17,9 @@ const handleChooseSize = (e: any) => {
   }
 
   const newData = data.map((item) => {
+          console.log(item.cartId, props.id);
+      console.log(item.cartId, props.id);
+
     if (item.cartId === props.id) {
       return {
         ...item,
@@ -26,8 +29,10 @@ const handleChooseSize = (e: any) => {
     return item;
   });
 
+
   setCart(newData);
 };
+
 
     
   return (

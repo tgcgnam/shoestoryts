@@ -6,6 +6,8 @@ import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
+import { message, notification, Popconfirm } from "antd";
+import CartWarning from "./CartWarning";
 
 function CartItem(props: any) {
   const { handlePrice } = globalFunction();
@@ -13,8 +15,6 @@ function CartItem(props: any) {
   const {
     cart,
     setCart,
-    setIsRemoveWarning,
-    setProductId,
     favProducts,
     setFavProducts,
     setIsAddFavSuccess,
@@ -55,11 +55,19 @@ function CartItem(props: any) {
     setCart(newData);
   };
 
-  const trash = () => {
-    setIsRemoveWarning(true);
-    setProductId(props.id);
+  function confirm() {
+    let newData = [...cart];
 
-  };
+    const filterCart = newData.filter((item) => item.cartId !== props.id);
+
+    setCart(filterCart);
+
+    message.success("Đã xoá sản phẩm khỏi giỏ hàng");
+  }
+
+  function cancel() {
+    message.error("Không xoá sản phẩm");
+  }
 
   const addToFavorite = () => {
     let check = true;
@@ -127,9 +135,11 @@ function CartItem(props: any) {
 
     setCart(newData);
   };
+  const [api, contextHolder] = notification.useNotification();
 
   return (
     <>
+      {contextHolder}
       <div className="cart-item">
         <div className="wrapper">
           <img src={props.img} className="cart-img" alt="cart-item" />
@@ -141,7 +151,7 @@ function CartItem(props: any) {
             className="sizes-select"
           >
             <option value="Sizes">
-              {props.chosenSize === '' ? "Sizes" : props.chosenSize}
+              {props.chosenSize === "" ? "Sizes" : props.chosenSize}
             </option>
             {props.sizes.map((item: any) => {
               if (item !== props.chosenSize) {
@@ -171,16 +181,24 @@ function CartItem(props: any) {
         </div>
         <div className="three">
           <div className="cart-del">
-            <FontAwesomeIcon icon={faTrash} onClick={trash} />
+            <Popconfirm
+              title="Bạn muốn xoá sản phẩm ?"
+              onConfirm={confirm}
+              onCancel={cancel}
+              okText="Yes"
+              cancelText="No"
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </Popconfirm>
           </div>
           <div className="buy-later" onClick={addToFavorite}>
             Mua sau
           </div>
         </div>
       </div>
-      {cartSizeWarnings[props.name] && (
-        <p className="size-warning">Vui lòng chọn size cho sản phẩm</p>
-      )}
+      {/* {cartSizeWarnings && (
+        <CartWarning title={"Ban chua chon size"}/>
+      )} */}
     </>
   );
 }
