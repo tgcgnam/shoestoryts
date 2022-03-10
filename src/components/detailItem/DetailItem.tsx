@@ -9,6 +9,7 @@ import ImagesGallery from "./ImgWrapper";
 import { Card, message, notification } from "antd";
 import { Link } from "react-router-dom";
 import ButtonAnt from "../button/Button";
+import ChosenSize from "../../utils/ChosenSize";
 
 function DetailItem({ prodId }: any) {
   const [product, setProduct]: any = useState({
@@ -20,20 +21,8 @@ function DetailItem({ prodId }: any) {
   });
   // console.log(setProduct)
   const [desc, setDesc]: any = useState({});
-  const {
-    setImgLink,
-    quantity,
-    setQuantity,
-    cart,
-    setCart,
-    isCartWarning,
-    setIsCartWarning,
-    isAddCartSuccess,
-    setIsAddCartSuccess,
-    isSoldOut,
-    setIsSoldOut,
-    setIsLoader,
-  } = useContext(GlobalContext);
+  const { quantity, cart, setCart, setIsSoldOut, setIsLoader } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     setIsLoader(true);
@@ -41,20 +30,19 @@ function DetailItem({ prodId }: any) {
       .then((res) => res.json())
       .then((product) => (setProduct(product), setIsLoader(false)));
 
-    // setImgLink(product.image1);
     fetch(`https://tstoreserver.herokuapp.com/description/${prodId}`)
       .then((res) => res.json())
       .then((desc) => setDesc(desc));
   }, []);
   const { handlePrice } = globalFunction();
 
-  const increase = () => {
-    setQuantity((prev: number) => prev + 1);
-  };
+  // const increase = () => {
+  //   setQuantity((prev: number) => prev + 1);
+  // };
 
-  const decrease = () => {
-    setQuantity((prev: number) => (prev > 1 ? prev - 1 : 1));
-  };
+  // const decrease = () => {
+  //   setQuantity((prev: number) => (prev > 1 ? prev - 1 : 1));
+  // };
 
   const [api, contextHolder] = notification.useNotification();
 
@@ -93,13 +81,13 @@ function DetailItem({ prodId }: any) {
           cartSizes: product.sizes,
           cartMaterial: product.material,
           cartColor: product.color,
-          cartChosenSize: "",
         });
       }
 
       setCart(newData);
     }
   };
+  console.log(product);
 
   return (
     <div className="detail-item-container">
@@ -118,25 +106,17 @@ function DetailItem({ prodId }: any) {
             </div>
             <div>Trạng thái: {product.condition}</div>
             <br />
-            <div className="quantity">
-              <span>Số lượng</span>
-              <div>
-                <div onClick={decrease}>–</div>
-                <div>{quantity}</div>
-                <div onClick={increase}>+</div>
-              </div>
-            </div>
+
+           Chọn size: <ChosenSize sizes={product.sizes} />
+            <br />
             {contextHolder}
-            {/* <div onClick={addToCart} className="order-btn">
-              Thêm vào giỏ hàng
-            </div> */}
+            <BuyNow className="order-btn" to={"/cart"} onClick={addToCart}>
+              Mua ngay
+            </BuyNow>
             <ButtonAnt onclick={addToCart} text={"Thêm vào giỏ hàng"} />
 
-            <Link className="order-btn" to={"/cart"} onClick={addToCart}>
-              Mua ngay
-            </Link>
-
             <div className="description">
+              <h5>Mô tả sản phẩm</h5>
               <p>{desc.content}</p>
             </div>
           </div>
@@ -147,7 +127,14 @@ function DetailItem({ prodId }: any) {
 }
 
 export default DetailItem;
-
+const BuyNow = styled(Link)`
+  padding: 11px 25px !important;
+  background-color: #ec2a21 !important;
+  margin-right: 12px !important;
+  :hover {
+    background-color: #ff00007a !important;
+  }
+`;
 const DetailWrapper = styled.div`
   margin: 50px;
   .detail-item {
@@ -209,6 +196,7 @@ const DetailWrapper = styled.div`
         .old-price {
           font-size: 1.8rem;
           text-decoration: line-through;
+          color:#333 ;
         }
       }
       .quantity {

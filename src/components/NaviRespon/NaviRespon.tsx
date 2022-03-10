@@ -25,7 +25,7 @@ const DrawerCustom = styled(Drawer)`
     right: 10px;
     border: none;
     :hover {
-      color: #f8c052;
+      color: #ec2a21;
     }
     .icon-close {
       svg {

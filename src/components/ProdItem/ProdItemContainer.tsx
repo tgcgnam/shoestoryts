@@ -4,11 +4,7 @@ import { GlobalContext } from "../../utils/globalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-import Search from "antd/lib/input/Search";
 import CartWarning from "../cart/CartWarning";
-import Loading from "../loading/Loading";
-import Context from "@ant-design/icons/lib/components/Context";
-import RadiusUprightOutlined from "@ant-design/icons/lib/icons/RadiusUprightOutlined";
 import ButtonAnt from "../button/Button";
 import InputSearch from "../filter/Search";
 

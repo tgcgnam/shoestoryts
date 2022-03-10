@@ -162,7 +162,7 @@ const RowSP = styled(Row)`
   a:hover {
     margin-left: 16px;
     transition: all 0.4s linear;
-    color: #f2b239;
+    color: #ec2a21;
   }
 `;
 

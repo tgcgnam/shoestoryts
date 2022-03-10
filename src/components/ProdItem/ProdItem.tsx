@@ -35,7 +35,7 @@ const CardProd = styled(Card)`
       font-size: 2.2rem;
     }
     :hover {
-      color: #f8c052;
+      color: #ec2a21;
     }
   }
   .ant-card-body {
@@ -66,8 +66,8 @@ const CardProd = styled(Card)`
     .ant-btn {
       border-radius: 12px;
       transform: translateY(200%);
-      color: #f8c052;
-      border-color: #f8c052;
+      color: #ec2a21;
+      border-color: #ec2a21;
       pointer-events: none;
       z-index: -1;
       opacity: 0;
@@ -95,13 +95,14 @@ const CardProd = styled(Card)`
       color: #000;
     }
     .prod-price {
-      color: #f8c052;
+      color: #ec2a21;
       font-weight: bold;
       margin: 8px 0;
       span {
         margin-right: 6px;
         font-size: 1.7rem;
         &.old-price {
+          color:#333 ;
           text-decoration: line-through;
           font-size: 1.5rem;
         }
@@ -140,15 +141,12 @@ function ProdItem(props: {
   const {
     cart,
     setCart,
-    setIsCartWarning,
     setIsSoldOut,
     favProducts,
     setIsUpdatedFavorite,
     setIsAddFavSuccess,
     setIsAddFavWarn,
     setFavProducts,
-    isAddFavSuccess,
-    isAddFavWarn,
   } = useContext(GlobalContext);
 
   //antd
@@ -162,6 +160,9 @@ function ProdItem(props: {
 
     if (props.condition === "Tạm Hết hàng") {
       setIsSoldOut(true);
+      api.info({
+        message: `Sản phẩm tạm hết hàng !`,
+      });
     } else {
       newData.map((item) => {
         if (item.cartId === props.id) {

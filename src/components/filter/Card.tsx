@@ -80,7 +80,6 @@ export default function CardTest(props:any) {
         </div>
 
         <Link
-          // onClick={showModal}
           to={`/detail/${props.id}`}
           style={{ textAlign: "center" }}
         >
@@ -122,7 +121,7 @@ const CardProd = styled(Card)`
       font-size: 2.2rem;
     }
     :hover {
-      color: #ff8873;
+      color: #ec2a21;
     }
   }
   .cart-plus-btn {
@@ -135,7 +134,7 @@ const CardProd = styled(Card)`
       font-size: 2.2rem;
     }
     :hover {
-      color: #f8c052;
+      color: #EC2A21;
     }
   }
   .ant-card-body {
@@ -166,8 +165,8 @@ const CardProd = styled(Card)`
     .ant-btn {
       border-radius: 12px;
       transform: translateY(200%);
-      color: #f8c052;
-      border-color: #f8c052;
+      color: #EC2A21;
+      border-color: #EC2A21;
       pointer-events: none;
       z-index: -1;
       opacity: 0;
@@ -195,7 +194,7 @@ const CardProd = styled(Card)`
       color: #000;
     }
     .prod-price {
-      color: #f8c052;
+      color: #EC2A21;
       font-weight: bold;
       margin: 8px 0;
       span {

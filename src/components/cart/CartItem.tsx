@@ -58,6 +58,7 @@ function CartItem(props: any) {
   const trash = () => {
     setIsRemoveWarning(true);
     setProductId(props.id);
+
   };
 
   const addToFavorite = () => {
@@ -106,7 +107,7 @@ function CartItem(props: any) {
   const handleChooseSize = (e: any) => {
     let data = [...cart];
 
-    if (e.target.value !== "Sizes") {
+    if (e.target.value !== props.sizes) {
       const newData = {
         ...cartSizeWarnings,
         [props.name]: false,
@@ -134,10 +135,13 @@ function CartItem(props: any) {
           <img src={props.img} className="cart-img" alt="cart-item" />
           <p className="name">{props.name}</p>
         </div>
-      <div className="one">
-          <select onChange={(e) => handleChooseSize(e)} className="sizes-select">
+        <div className="one">
+          <select
+            onChange={(e) => handleChooseSize(e)}
+            className="sizes-select"
+          >
             <option value="Sizes">
-              {props.chosenSize === "" ? "Sizes" : props.chosenSize}
+              {props.chosenSize === '' ? "Sizes" : props.chosenSize}
             </option>
             {props.sizes.map((item: any) => {
               if (item !== props.chosenSize) {
@@ -154,8 +158,8 @@ function CartItem(props: any) {
             <div>{props.quantity}</div>
             <div onClick={increase}>+</div>
           </div>
-      </div>
-       <div className="two">
+        </div>
+        <div className="two">
           <div className="price">
             <span>Đơn giá</span>
             <p>{handlePrice(props.price)}</p>
@@ -164,15 +168,15 @@ function CartItem(props: any) {
             <span>Tổng cộng</span>
             <p>{handlePrice(props.price * props.quantity)}</p>
           </div>
-       </div>
-       <div className="three">
-          <div className="cart-del" onClick={trash}>
-            <FontAwesomeIcon icon={faTrash} />
+        </div>
+        <div className="three">
+          <div className="cart-del">
+            <FontAwesomeIcon icon={faTrash} onClick={trash} />
           </div>
           <div className="buy-later" onClick={addToFavorite}>
             Mua sau
           </div>
-       </div>
+        </div>
       </div>
       {cartSizeWarnings[props.name] && (
         <p className="size-warning">Vui lòng chọn size cho sản phẩm</p>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, SetStateAction } from "react";
+import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../../utils/globalState";
 
@@ -20,7 +20,7 @@ const InputStl = styled.div`
     font-size: $input-font-size;
     border: none;
     outline: none;
-    border-bottom: 3px solid #333333;
+    border-bottom: 2px solid #ec2a21;
     font-family: $font-family;
 
     &:focus {

@@ -27,7 +27,7 @@ const SiderNav = styled(Sider)`
   }
 `;
 const SbackTop = styled(BackTop)`
-  background: #333;
+  background: #ec2a21;
   color: #fff;
   text-align: center;
   border-radius: 50%;

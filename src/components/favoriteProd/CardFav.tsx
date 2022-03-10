@@ -28,7 +28,7 @@ const CarItem = styled.div`
     .del-fav {
       cursor: pointer;
       :hover {
-        color: #a36e0f;
+        color: #ec2a21;
       }
     }
   }

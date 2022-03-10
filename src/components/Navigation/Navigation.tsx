@@ -33,7 +33,7 @@ const LiItem = styled(Menu.Item)`
   margin: 0px !important;
 
   :hover {
-    background-color: #f2b239 !important;
+    background-color: #ec2b2183 !important;
   }
   :hover:last-child {
     background-color: #fff !important;
@@ -52,7 +52,7 @@ const LiItem = styled(Menu.Item)`
     a:hover {
     }
     .active {
-      color: #f2b239 !important;
+      color: #ec2a21 !important;
     }
   }
   .quantity {

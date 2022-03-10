@@ -32,12 +32,9 @@ function Infomation() {
     isWarningInfo,
     setIsWarningInfo,
     isSizeWarning,
-    setIsSizeWarning,
     isWarningConfirmInfo,
-    setIsWarningConfirmInfo,
     isOrderSuccess,
     isWarningCartEmpty,
-    setIsWarningCartEmpty,
     setIsLoader,
   } = useContext(GlobalContext);
 
@@ -124,7 +121,7 @@ function Infomation() {
   };
 
   useEffect(() => {
-    setIsLoader(false)
+    setIsLoader(false);
     const errorsValue = Object.values(errors);
 
     const check = errorsValue.filter((item) => item).length;
