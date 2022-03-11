@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import globalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
 import { message, Popconfirm } from "antd";

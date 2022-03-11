@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 import { PageHeader } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";

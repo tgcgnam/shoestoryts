@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import GlobalFunction from "../../utils/globalFunction";
 import styled from "styled-components";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 
 const CarItem = styled.div`
   padding: 12px;

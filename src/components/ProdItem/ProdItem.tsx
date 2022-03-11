@@ -4,7 +4,7 @@ import { Card, notification } from "antd";
 import { ShoppingOutlined, HeartFilled, CheckCircleTwoTone, HeartTwoTone } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 
 import "antd/dist/antd.css";
 

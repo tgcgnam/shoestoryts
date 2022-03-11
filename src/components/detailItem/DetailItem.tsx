@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 import GlobalFunction from "../../utils/globalFunction";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import styled from "styled-components";

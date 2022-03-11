@@ -1,7 +1,7 @@
 import { Result, Button } from "antd";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 import CartItem from "./CartItem";
 import styled from "styled-components";
 

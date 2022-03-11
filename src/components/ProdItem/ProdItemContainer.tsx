@@ -1,6 +1,6 @@
 import { Button, Col, List, message, notification, Row, Space } from "antd";
 import { useEffect, useContext, useState, createContext } from "react";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";

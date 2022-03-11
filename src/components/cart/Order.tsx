@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import GlobalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
 
@@ -13,10 +13,8 @@ function Order() {
     cart,
     letSubmit,
     cusInfo,
-
     cartSizeWarnings,
     setIsLoader,
-
     setCart,
     setOrderedProds,
   } = useContext(GlobalContext);

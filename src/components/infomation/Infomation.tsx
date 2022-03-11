@@ -8,7 +8,7 @@ import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Order from "../cart/Order";
 import Inputcheck from "../inputcheck/Inputcheck";
-import { GlobalContext } from "../../utils/GlobalState";
+import { GlobalContext } from "../../utils/globalState";
 import { notification } from "antd";
 import { CaretLeftOutlined } from "@ant-design/icons";
 

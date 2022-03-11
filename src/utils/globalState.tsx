@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const GlobalContext: any = createContext(GlobalState);
 
-function GlobalState({ children }: any) {
+function GlobalState({ children }:{children:any}) {
   const [products, setProducts] = useState([]);
   const [productId, setProductId] = useState();
   const [favProducts, setFavProducts] = useState(() => {
