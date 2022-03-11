@@ -4,7 +4,7 @@ import { Card, notification } from "antd";
 import { ShoppingOutlined, HeartFilled, CheckCircleTwoTone, HeartTwoTone } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 
 import "antd/dist/antd.css";
 
@@ -140,11 +140,8 @@ function ProdItem(props: {
   const {
     cart,
     setCart,
-    setIsSoldOut,
     favProducts,
     setIsUpdatedFavorite,
-    setIsAddFavSuccess,
-    setIsAddFavWarn,
     setFavProducts,
   } = useContext(GlobalContext);
 
@@ -158,7 +155,7 @@ function ProdItem(props: {
     let check = true;
 
     if (props.condition === "Tạm Hết hàng") {
-      setIsSoldOut(true);
+      // setIsSoldOut(true);
       api.info({
         message: `Sản phẩm tạm hết hàng !`,
 
@@ -223,8 +220,6 @@ function ProdItem(props: {
         message: `Đã thêm vào yêu thích!`,
         icon : <HeartTwoTone twoToneColor="#eb2f96" />,
       });
-      setIsAddFavSuccess(true);
-      setIsAddFavWarn(false);
       setIsUpdatedFavorite(true);
       newData.push({
         id: props.id,

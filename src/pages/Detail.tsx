@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
 import DetailItem from "../components/detailItem/DetailItem";
-import { GlobalContext } from "../utils/globalState";
-import { useContext } from "react";
 
 function Detail() {
   const { id } = useParams();

@@ -18,7 +18,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Infomation from "../infomation/Infomation";
 import Loading from "../loading/Loading";
 import { useContext } from "react";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 const abc = styled.div``;
 const SiderNav = styled(Sider)`
   @media (max-width: 1023px) {

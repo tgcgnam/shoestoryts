@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import globalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 
 import "./CartItem.scss";
 import { message, Popconfirm } from "antd";
@@ -16,8 +16,6 @@ function CartItem(props: any) {
     setCart,
     favProducts,
     setFavProducts,
-    setIsAddFavSuccess,
-    setIsAddFavWarn,
     setIsUpdatedFavorite,
     cartSizeWarnings,
     setCartSizeWarnings,
@@ -75,18 +73,13 @@ function CartItem(props: any) {
     newData.map((item) => {
       if (item.id === props.id) {
         check = false;
-        setIsAddFavSuccess(false);
-        setIsAddFavWarn(true);
         setIsUpdatedFavorite(false);
-
         return item;
       }
       return item;
     });
 
     if (check) {
-      setIsAddFavSuccess(true);
-      setIsAddFavWarn(false);
       setIsUpdatedFavorite(true);
       newData.push({
         id: props.id,

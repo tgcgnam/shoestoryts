@@ -1,4 +1,4 @@
-import GlobalState from "./utils/globalState";
+import GlobalState from "./utils/GlobalState";
 import LayoutPage from "./components/layoutpage/LayoutPage";
 import "./App.scss";
 

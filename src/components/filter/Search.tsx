@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 
 const InputStl = styled.div`
   position: relative;

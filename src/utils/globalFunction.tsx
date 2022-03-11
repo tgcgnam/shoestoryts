@@ -1,4 +1,4 @@
-const globalFunction = () => {
+const GlobalFunction = () => {
   const handlePrice = (price:number) => {
     const milions = `${
       Math.floor(price / 1000000) === 0 ? "" : Math.floor(price / 1000000)
@@ -27,4 +27,4 @@ const globalFunction = () => {
   return { handlePrice };
 };
 
-export default globalFunction;
+export default GlobalFunction;

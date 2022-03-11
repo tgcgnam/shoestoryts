@@ -1,10 +1,9 @@
 import { Button, Col, List, message, notification, Row, Space } from "antd";
 import { useEffect, useContext, useState, createContext } from "react";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 import ProdItem from "./ProdItem";
 import "antd/dist/antd.css";
 import styled from "styled-components";
-import CartWarning from "../cart/CartWarning";
 import ButtonAnt from "../button/Button";
 import InputSearch from "../filter/Search";
 

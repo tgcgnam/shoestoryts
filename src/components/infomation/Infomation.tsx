@@ -1,7 +1,6 @@
 import {
   faCreditCard,
   faLocationDot,
-
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,13 +8,12 @@ import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Order from "../cart/Order";
 import Inputcheck from "../inputcheck/Inputcheck";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 import { notification } from "antd";
 import { CaretLeftOutlined } from "@ant-design/icons";
 
 function Infomation() {
   const {
-
     cusInfo,
     setCusInfo,
     errors,
@@ -23,9 +21,7 @@ function Infomation() {
     confirmInfo,
     setConfirmInfo,
     setLetSubmit,
-   
   } = useContext(GlobalContext);
-
 
   const handleChange = (e: any) => {
     setLetSubmit(false);

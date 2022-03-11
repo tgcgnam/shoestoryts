@@ -1,6 +1,6 @@
 import { List, Result } from "antd";
 import { useContext } from "react";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 import styled from "styled-components";
 import CartFav from "./CardFav";
 import { Link } from "react-router-dom";

@@ -2,9 +2,9 @@ import { Button, Modal, notification, Result } from "antd";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import globalFunction from "../../utils/globalFunction";
+import GlobalFunction from "../../utils/globalFunction";
 
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 
 import "./CartItem.scss";
 
@@ -13,24 +13,21 @@ function Order() {
     cart,
     letSubmit,
     cusInfo,
-    setIsWarningConfirmInfo,
-    setIsSizeWarning,
+
     cartSizeWarnings,
     setIsLoader,
-    setIsOrderSuccess,
+
     setCart,
     setOrderedProds,
-    setIsWarningCartEmpty,
   } = useContext(GlobalContext);
 
-  const { handlePrice } = globalFunction();
+  const { handlePrice } = GlobalFunction();
 
   let deliveryFee = 0;
   const calculateOrderTotal = () => {
     if (cusInfo["phương thức giao hàng"] === "Giao nhanh") {
       deliveryFee = 35000;
     }
-
     const result = cart.reduce(
       (
         initValue: number,
@@ -45,8 +42,6 @@ function Order() {
   };
 
   setIsLoader(false);
-
-  const [api, contextHolder] = notification.useNotification();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -88,21 +83,15 @@ function Order() {
           setCart([]);
         }
       } else {
-        setIsWarningCartEmpty(true);
       }
-      setIsSizeWarning(false);
     }
 
-    if (!letSubmit) {
-      setIsWarningConfirmInfo(true);
-
-      setIsOrderSuccess(false);
-    }
+    // if (!letSubmit) {
+    // }
   };
 
   return (
     <div className="order-container">
-      {contextHolder}
       <div className="order-left">
         <div className="address">
           <h1>Giao tới</h1>
@@ -261,7 +250,7 @@ function Order() {
                   )}
                 </span>
               </div>
-           
+
               <Button key="buy">
                 <Link to={"/"}>Tiếp tục mua sắm </Link>
               </Button>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { GlobalContext } from "../../utils/globalState";
-import globalFunction from "../../utils/globalFunction";
+import { GlobalContext } from "../../utils/GlobalState";
+import GlobalFunction from "../../utils/globalFunction";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import styled from "styled-components";
 import ImagesGallery from "./ImgWrapper";
@@ -10,14 +10,13 @@ import ButtonAnt from "../button/Button";
 import ChosenSize from "../../utils/ChosenSize";
 import { CheckCircleTwoTone } from "@ant-design/icons";
 
-function DetailItem({ prodId }: any) {
+function DetailItem({ prodId }: { prodId: number }) {
   const [product, setProduct]: any = useState({
     sizes: [],
   });
 
   const [desc, setDesc]: any = useState({});
-  const { quantity, cart, setCart, setIsSoldOut, setIsLoader } =
-    useContext(GlobalContext);
+  const { quantity, cart, setCart, setIsLoader } = useContext(GlobalContext);
 
   useEffect(() => {
     setIsLoader(true);
@@ -29,7 +28,7 @@ function DetailItem({ prodId }: any) {
       .then((res) => res.json())
       .then((desc) => setDesc(desc));
   }, []);
-  const { handlePrice } = globalFunction();
+  const { handlePrice } = GlobalFunction();
 
   const [api, contextHolder] = notification.useNotification();
 
@@ -38,7 +37,6 @@ function DetailItem({ prodId }: any) {
     let check = true;
 
     if (product.condition === "Hết hàng") {
-      setIsSoldOut(true);
       api.info({
         message: `Sản phẩm tạm hết hàng !`,
       });

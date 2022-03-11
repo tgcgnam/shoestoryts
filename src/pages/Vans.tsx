@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
 import ProdItem from "../components/prodItem/ProdItem";
-import { GlobalContext } from "../utils/globalState";
+import { GlobalContext } from "../utils/GlobalState";
 import { List } from "antd";
 import "antd/dist/antd.css";
 import styled from "styled-components";

@@ -1,4 +1,4 @@
-import { GlobalContext } from "./globalState";
+import { GlobalContext } from "./GlobalState";
 import { useContext } from "react";
 
 function ChosenSize(props: any) {

@@ -66,7 +66,7 @@ input[type="number"] {
             width: 80px;
         }
         .name {
-            color: #b5821d;
+            color: tomato;
             font-size: 1.4rem;
             width: 240px;
             line-height: 2.2rem;
@@ -136,7 +136,7 @@ input[type="number"] {
             margin: 12px 0;
         }
         p {
-            color: #EC2A21;
+            color: #ec2a21;
             font-size: 1.3rem;
         }
     }
@@ -151,7 +151,7 @@ input[type="number"] {
     span {
         font-size: 1.4rem;
         span {
-            color: #EC2A21;
+            color: #ec2a21;
         }
     }
     input {
@@ -165,7 +165,7 @@ input[type="number"] {
         &>div {
             margin-bottom: 36px;
             p {
-                color: #EC2A21;
+                color: #ec2a21;
                 font-size: 1.3rem;
             }
         }
@@ -489,7 +489,7 @@ input[type="number"] {
     }
 }
 
-@media (max-width :1313px) {
+@media (max-width: 1313px) {
     .order-container {
         width: 100%;
     }
@@ -538,10 +538,11 @@ input[type="number"] {
                 bottom: 16px;
             }
             .cart-del {
-                cursor: pointer;
                  :hover {
-                    color: #a36e0f;
+                    color: tomato;
                 }
+                color: tomato;
+                cursor: pointer;
             }
         }
     }

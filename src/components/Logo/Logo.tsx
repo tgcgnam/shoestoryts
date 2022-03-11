@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 import { PageHeader } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
@@ -89,16 +89,12 @@ const Header = styled(PageHeader)`
 `;
 
 function Logo() {
-  const { isHideNav, setIsHideNav } = useContext(GlobalContext);
-
-  const displayNavigation = () => {
-    setIsHideNav(!isHideNav);
-  };
 
   return (
     <Header>
       <div>
-        <span onClick={displayNavigation} className="menu-bars">
+        <span
+          className="menu-bars">
           <i className="fas fa-bars" />
         </span>
 

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import CartContainer from "../components/cart/CartContainer";
-import { GlobalContext } from "../utils/globalState";
+import { GlobalContext } from "../utils/GlobalState";
 
 
 function CartPage() {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CartWrapper from "./CartWrapper";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 import { useContext, useEffect } from "react";
 import styled from "styled-components";
 

@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import globalFunction from "../../utils/globalFunction";
+import GlobalFunction from "../../utils/globalFunction";
 import styled from "styled-components";
-import { GlobalContext } from "../../utils/globalState";
+import { GlobalContext } from "../../utils/GlobalState";
 
 const CarItem = styled.div`
   padding: 12px;
@@ -35,13 +35,12 @@ const CarItem = styled.div`
 `;
 
 function CartFav(props: any) {
-  const { handlePrice } = globalFunction();
+  const { handlePrice } = GlobalFunction();
 
   const { favProducts, setFavProducts } = useContext(GlobalContext);
 
   const deleteFavProd = () => {
     let newData = [...favProducts];
-    console.log(newData);
     const filterFavProducts = newData.filter((item) => item.id !== props.id);
 
     setFavProducts(filterFavProducts);
