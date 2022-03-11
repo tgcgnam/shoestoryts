@@ -207,8 +207,6 @@ function ProdItem(props: {
     newData.map((item) => {
       if (item.id === props.id) {
         check = false;
-        setIsAddFavSuccess(false);
-        setIsAddFavWarn(true);
         api.info({
           type:'success',
           message: `Sản phẩm đã có trong yêu thích!`,
