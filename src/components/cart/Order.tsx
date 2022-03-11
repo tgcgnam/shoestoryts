@@ -263,7 +263,7 @@ function Order() {
               </div>
            
               <Button key="buy">
-                <Link to={"/"}>Tiếp tục mua sắp </Link>
+                <Link to={"/"}>Tiếp tục mua sắm </Link>
               </Button>
             </>,
           ]}
