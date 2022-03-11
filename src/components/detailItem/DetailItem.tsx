@@ -10,7 +10,7 @@ import ButtonAnt from "../button/Button";
 import ChosenSize from "../../utils/ChosenSize";
 import { CheckCircleTwoTone } from "@ant-design/icons";
 
-function DetailItem({ prodId }: { prodId: number }) {
+function DetailItem({ prodId }: { prodId: any }) {
   const [product, setProduct]: any = useState({
     sizes: [],
   });

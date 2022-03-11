@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import DetailItem from "../components/detailItem/DetailItem";
 
 function Detail() {
-  const { id } = useParams();
+  const {id} = useParams();
   return (
     <>
-      <DetailItem prodId={id} />
+      <DetailItem prodId={id}  />
     </>
   );
 }
