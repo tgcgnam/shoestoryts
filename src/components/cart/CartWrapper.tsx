@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../utils/globalState";
 import CartItem from "./CartItem";
 import styled from "styled-components";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const SubtitleAnt = styled.div`
   font-size: 3rem;

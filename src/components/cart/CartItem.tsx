@@ -6,8 +6,7 @@ import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
 
 import "./CartItem.scss";
-import { message, notification, Popconfirm } from "antd";
-import CartWarning from "./CartWarning";
+import { message, Popconfirm } from "antd";
 
 function CartItem(props: any) {
   const { handlePrice } = globalFunction();
@@ -178,7 +177,7 @@ function CartItem(props: any) {
           </div>
         </div>
         <div className="three">
-          <div className="cart-del">
+          <div className="cart-del" style={{ cursor: "pointer" }}>
             <Popconfirm
               title="Bạn muốn xoá sản phẩm ?"
               onConfirm={confirm}
@@ -194,9 +193,6 @@ function CartItem(props: any) {
           </div>
         </div>
       </div>
-      {/* {cartSizeWarnings && (
-        <CartWarning title={"Ban chua chon size"}/>
-      )} */}
     </>
   );
 }

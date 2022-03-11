@@ -1,29 +1,21 @@
 import {
   faCreditCard,
   faLocationDot,
-  faLocationPin,
-  faTimes,
+
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import CartWarning from "../cart/CartWarning";
 import Order from "../cart/Order";
 import Inputcheck from "../inputcheck/Inputcheck";
 import { GlobalContext } from "../../utils/globalState";
+import { notification } from "antd";
+import { CaretLeftOutlined } from "@ant-design/icons";
 
 function Infomation() {
   const {
-    cart,
-    setCart,
-    isRemoveWarning,
-    setIsRemoveWarning,
-    productId,
-    isAddFavSuccess,
-    setIsAddFavSuccess,
-    isAddFavWarn,
-    setIsAddFavWarn,
+
     cusInfo,
     setCusInfo,
     errors,
@@ -31,27 +23,9 @@ function Infomation() {
     confirmInfo,
     setConfirmInfo,
     setLetSubmit,
-    isWarningInfo,
-    setIsWarningInfo,
-    isSizeWarning,
-    isWarningConfirmInfo,
-    isOrderSuccess,
-    isWarningCartEmpty,
-    setIsLoader,
+   
   } = useContext(GlobalContext);
 
-  // const remove = () => {
-  //   let newData = [...cart];
-
-  //   const filterData = newData.filter((item) => item.cartId !== productId);
-
-  //   setCart(filterData);
-  //   setIsRemoveWarning(false);
-  // };
-
-  // const undo = () => {
-  //   setIsRemoveWarning(false);
-  // };
 
   const handleChange = (e: any) => {
     setLetSubmit(false);
@@ -138,12 +112,22 @@ function Infomation() {
       window.scrollTo(0, 0);
     } else {
       setLetSubmit(false);
-      setIsWarningInfo(true);
+
+      notification.warn({
+        message: "Thông báo",
+        description: "Vui lòng kiểm tra lại thông tin nhận hàng !",
+      });
     }
   };
 
   return (
     <div style={{ padding: "20px" }}>
+      <br />
+      <Link style={{ marginLeft: "20px", color: "black" }} to={"/cart"}>
+        <CaretLeftOutlined />
+        Quay lại giỏ hàng
+      </Link>
+
       <div className="customer-information">
         <div className="address">
           <div className="address-wrapper">
@@ -329,14 +313,6 @@ function Infomation() {
         </div>
         <Order />
       </div>
-      {isWarningInfo && (
-        <CartWarning
-          text={"Thông tin của quý khách chưa đầy đủ hoặc chưa đúng. !"}
-        />
-      )}
-      {isWarningConfirmInfo && (
-        <CartWarning text={"Vui lòng xác nhận thông tin của quý khách !"} />
-      )}
     </div>
   );
 }

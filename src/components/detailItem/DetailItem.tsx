@@ -4,7 +4,7 @@ import globalFunction from "../../utils/globalFunction";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import styled from "styled-components";
 import ImagesGallery from "./ImgWrapper";
-import { Card, message, notification } from "antd";
+import { notification } from "antd";
 import { Link } from "react-router-dom";
 import ButtonAnt from "../button/Button";
 import ChosenSize from "../../utils/ChosenSize";

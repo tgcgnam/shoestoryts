@@ -1,5 +1,6 @@
-import { notification } from "antd";
-import { useContext } from "react";
+import { Button, Modal, notification, Result } from "antd";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 import globalFunction from "../../utils/globalFunction";
 
@@ -15,7 +16,7 @@ function Order() {
     setIsWarningConfirmInfo,
     setIsSizeWarning,
     cartSizeWarnings,
-setIsLoader,
+    setIsLoader,
     setIsOrderSuccess,
     setCart,
     setOrderedProds,
@@ -43,9 +44,11 @@ setIsLoader,
     return result + deliveryFee;
   };
 
-setIsLoader(false)
+  setIsLoader(false);
 
   const [api, contextHolder] = notification.useNotification();
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const confirmOrder = () => {
     let check = false;
@@ -66,25 +69,19 @@ setIsLoader(false)
       }
     });
 
-    // api.info({
-    //   message: `order error`,
-    //   // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
-    // });
-
     if (check) {
-      api.info({
-        message: ` error`,
-        // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+      notification.warn({
+        message: "Thông báo",
+        description: "Vui lòng kiểm tra lại thông tin nhận hàng !",
       });
-      // setIsSizeWarning(true);
-      // console.log("hello");
+      notification.warn({
+        message: "Thông báo",
+        description: "Bạn chưa chọn sizes giày !",
+      });
     } else {
       if (cart.length !== 0) {
         if (letSubmit) {
-          api.info({
-            message: `order susscess`,
-            // icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
-          });
+          setIsModalVisible(true);
 
           setOrderedProds(cart);
 
@@ -98,6 +95,7 @@ setIsLoader(false)
 
     if (!letSubmit) {
       setIsWarningConfirmInfo(true);
+
       setIsOrderSuccess(false);
     }
   };
@@ -207,6 +205,70 @@ setIsLoader(false)
       <div onClick={confirmOrder} className="confirm-order">
         Xác nhận đặt hàng
       </div>
+      <Modal visible={isModalVisible} footer={null} closeIcon>
+        <Result
+          status="success"
+          title="Đặt hàng thành công !"
+          extra={[
+            <>
+              <div className="address">
+                <h1>Giao tới</h1>
+                <span className="name">
+                  {letSubmit ? (
+                    <p>{cusInfo["tên"]}</p>
+                  ) : (
+                    <div className="so-on-wrapper">
+                      <div>Đang xác nhận</div>
+                      <div className="loading"></div>
+                    </div>
+                  )}
+                </span>
+                <span className="phone">
+                  {letSubmit ? (
+                    <p>{cusInfo["số điện thoại"]}</p>
+                  ) : (
+                    <div className="so-on-wrapper">
+                      <div>Đang xác nhận</div>
+                      <div className="loading"></div>
+                    </div>
+                  )}
+                </span>
+                <span className="email">
+                  {letSubmit ? (
+                    <p>{cusInfo.email}</p>
+                  ) : (
+                    <div className="so-on-wrapper">
+                      <div>Đang xác nhận</div>
+                      <div className="loading"></div>
+                    </div>
+                  )}
+                </span>
+                <span className="address-item">
+                  {letSubmit ? (
+                    cusInfo["địa chỉ"] ? (
+                      <p>
+                        {cusInfo["địa chỉ"]}, {cusInfo["xã, phường"]},{" "}
+                        {cusInfo["quận, huyện"]}, {cusInfo["tỉnh, thành phố"]}
+                      </p>
+                    ) : (
+                      "Vui lòng xác nhận"
+                    )
+                  ) : (
+                    <div className="so-on-wrapper">
+                      <div>Đang xác nhận</div>
+                      <div className="loading"></div>
+                    </div>
+                  )}
+                </span>
+              </div>
+           
+              <Button key="buy">
+                <Link to={"/"}>Tiếp tục mua sắp </Link>
+              </Button>
+            </>,
+          ]}
+        />
+      </Modal>
     </div>
   );
 }

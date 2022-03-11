@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { createContext, useContext } from "react";
-import { Card, message, notification } from "antd";
+import { useContext } from "react";
+import { Card, notification } from "antd";
 import { ShoppingOutlined, HeartFilled, CheckCircleTwoTone, HeartTwoTone } from "@ant-design/icons";
 import styled from "styled-components";
 import globalFunction from "../../utils/globalFunction";
 import { GlobalContext } from "../../utils/globalState";
 
 import "antd/dist/antd.css";
-import CartWarning from "../cart/CartWarning";
 
 
 const CardProd = styled(Card)`
