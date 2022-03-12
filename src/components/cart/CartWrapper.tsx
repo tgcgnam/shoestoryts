@@ -32,7 +32,7 @@ function CartWrapper() {
         ) : (
           cart.map(
             (item: {
-              cartId: number | undefined;
+              cartId: number;
               cartImg: string;
               cartName: string;
               cartQuantity: number;

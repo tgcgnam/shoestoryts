@@ -15,7 +15,7 @@ function DetailItem({ prodId }: { prodId: any }) {
     sizes: [],
   });
 
-  const [desc, setDesc]: any = useState({});
+  const [desc, setDesc]: any= useState({});
   const { quantity, cart, setCart, setIsLoader } = useContext(GlobalContext);
 
   useEffect(() => {

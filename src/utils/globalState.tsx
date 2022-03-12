@@ -35,13 +35,11 @@ function GlobalState({ children }:{children:any}) {
   });
   localStorage.setItem("isUpdated", JSON.stringify(isUpdatedFavorite));
   const [quantity, setQuantity] = useState(1);
-  const [cusInfo, setCusInfo] = useState({});
-  const [errors, setErrors] = useState({});
-  const [confirmInfo, setConfirmInfo] = useState(false);
   const [letSubmit, setLetSubmit] = useState(false);
   const [isLoader, setIsLoader] = useState(true);
   const [cartSizeWarnings, setCartSizeWarnings] = useState({});
   const [orderedProds, setOrderedProds] = useState([]);
+  const [cusInfo, setCusInfo]: any = useState({});
   const [seeMore, setSeeMore] = useState(false);
 
   return (
@@ -63,19 +61,14 @@ function GlobalState({ children }:{children:any}) {
         setIsUpdatedFavorite,
         quantity,
         setQuantity,
-        cusInfo,
-        setCusInfo,
-        errors,
-        setErrors,
-        confirmInfo,
-        setConfirmInfo,
         letSubmit,
         setLetSubmit,
         cartSizeWarnings,
         setCartSizeWarnings,
         setOrderedProds,
         isLoader,
-        setIsLoader,
+        setIsLoader,cusInfo,
+setCusInfo
       }}
     >
       {children}

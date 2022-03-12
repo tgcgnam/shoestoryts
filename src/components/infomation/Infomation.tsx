@@ -4,7 +4,7 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Order from "../cart/Order";
 import Inputcheck from "../inputcheck/Inputcheck";
@@ -13,15 +13,10 @@ import { notification } from "antd";
 import { CaretLeftOutlined } from "@ant-design/icons";
 
 function Infomation() {
-  const {
-    cusInfo,
-    setCusInfo,
-    errors,
-    setErrors,
-    confirmInfo,
-    setConfirmInfo,
-    setLetSubmit,
-  } = useContext(GlobalContext);
+  const [errors, setErrors]: any = useState({});
+  const [confirmInfo, setConfirmInfo] = useState(false);
+
+  const { setLetSubmit, cusInfo, setCusInfo } = useContext(GlobalContext);
 
   const handleChange = (e: any) => {
     setLetSubmit(false);
